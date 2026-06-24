@@ -79,7 +79,7 @@ export default function Home() {
       slug: "corporate-events",
       desc: "Premier corporate event management in Dubai — from elite award galas and stakeholder dinners to large-scale corporate gatherings that leave a lasting impression across the UAE.",
       icon: Briefcase,
-      image: "https://images.unsplash.com/photo-1511578314322-379afb476865?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80"
+      image: "/expertise/1.png"
     },
     {
       title: "Brand Activations",
@@ -87,7 +87,7 @@ export default function Home() {
       slug: "brand-activations",
       desc: "Award-winning brand activation agency in the UAE crafting immersive, multi-sensory experiences that connect brands with their audiences and drive measurable business impact.",
       icon: Star,
-      image: "/home/brand_activations_premium.png"
+      image: "/expertise/2.png"
     },
     {
       title: "Weddings",
@@ -95,7 +95,7 @@ export default function Home() {
       slug: "weddings",
       desc: "Bespoke luxury wedding planning in Dubai — from intimate desert ceremonies to grand ballroom celebrations, we craft unforgettable wedding experiences across the UAE.",
       icon: Star,
-      image: "/home/conferences_premium.png"
+      image: "/expertise/3.png"
     }
   ];
 

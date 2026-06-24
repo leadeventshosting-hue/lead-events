@@ -15,27 +15,29 @@ const LinkedinIcon = () => (
 
 export default function Footer() {
   return (
-    <footer className="bg-brand-dark pt-32 pb-10 border-t border-white/5 relative overflow-hidden mt-auto">
+    <footer className="bg-white/5 backdrop-blur-xl pt-8 pb-6 border-t border-white/10 relative overflow-hidden mt-auto">
       {/* Background Glow */}
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-[1000px] h-[300px] bg-brand-red/5 blur-[120px] pointer-events-none z-0" />
       
       <div className="container mx-auto px-6 lg:px-12 relative z-10">
-        <div className="grid grid-cols-1 md:grid-cols-12 gap-16 md:gap-8 lg:gap-16 mb-24">
+        <div className="grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-6 mb-6">
           
-          {/* Brand Info (Large Span) */}
-          <div className="md:col-span-5 space-y-8">
-            <Link to="/" className="inline-block cursor-hover-target group">
-              <span className="text-4xl font-black tracking-tighter uppercase text-white group-hover:text-brand-red transition-colors duration-300">
-                Lead<span className="text-brand-red group-hover:text-white transition-colors duration-300">Events</span>
-              </span>
+          {/* Brand Logo */}
+          <div className="md:col-span-5 space-y-2">
+            <Link to="/" onClick={(e) => e.preventDefault()} className="inline-block cursor-hover-target group -mt-10 -mb-4">
+              <img
+                src="/logo.png"
+                alt="Lead Events Logo"
+                className="h-28 md:h-36 w-auto object-contain transition-transform duration-300 group-hover:scale-105"
+              />
             </Link>
             <p className="text-brand-text/60 leading-relaxed max-w-sm text-lg font-light">
               Engineering premium live experiences and world-class brand activations across the UAE.
             </p>
-            <div className="flex items-center gap-6 text-brand-text/40 pt-4">
-              <a href="#" className="hover:text-white transition-colors cursor-hover-target"><FacebookIcon /></a>
-              <a href="#" className="hover:text-white transition-colors cursor-hover-target"><InstagramIcon /></a>
-              <a href="#" className="hover:text-white transition-colors cursor-hover-target"><LinkedinIcon /></a>
+            <div className="flex items-center gap-6 text-brand-text/40 pt-2">
+              <a href="#" onClick={(e) => e.preventDefault()} className="hover:text-white transition-colors cursor-hover-target"><FacebookIcon /></a>
+              <a href="#" onClick={(e) => e.preventDefault()} className="hover:text-white transition-colors cursor-hover-target"><InstagramIcon /></a>
+              <a href="#" onClick={(e) => e.preventDefault()} className="hover:text-white transition-colors cursor-hover-target"><LinkedinIcon /></a>
             </div>
           </div>
 
@@ -45,7 +47,7 @@ export default function Footer() {
             <ul className="space-y-4">
               {['About', 'Services', 'Portfolio', 'Contact'].map((link) => (
                 <li key={link}>
-                  <Link to={`/${link.toLowerCase()}`} className="text-brand-text/60 hover:text-white transition-colors flex items-center group cursor-hover-target text-sm tracking-wide">
+                  <Link to={`/${link.toLowerCase()}`} onClick={(e) => e.preventDefault()} className="text-brand-text/60 hover:text-white transition-colors flex items-center group cursor-hover-target text-sm tracking-wide">
                     {link} <ArrowRight className="w-3 h-3 ml-2 opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all" />
                   </Link>
                 </li>
@@ -63,11 +65,11 @@ export default function Footer() {
               </li>
               <li className="flex items-center gap-4 text-brand-text/60">
                 <Phone size={18} className="text-brand-red shrink-0 opacity-50" />
-                <a href="tel:+971509689671" className="text-sm tracking-wide hover:text-white transition-colors cursor-hover-target">+971-50-9689671</a>
+                <a href="tel:+971509689671" onClick={(e) => e.preventDefault()} className="text-sm tracking-wide hover:text-white transition-colors cursor-hover-target">+971-50-9689671</a>
               </li>
               <li className="flex items-center gap-4 text-brand-text/60">
                 <Mail size={18} className="text-brand-red shrink-0 opacity-50" />
-                <a href="mailto:info@leadevents.com" className="text-sm tracking-wide hover:text-white transition-colors cursor-hover-target">info@leadevents.com</a>
+                <a href="mailto:info@leadevents.com" onClick={(e) => e.preventDefault()} className="text-sm tracking-wide hover:text-white transition-colors cursor-hover-target">info@leadevents.com</a>
               </li>
             </ul>
           </div>
@@ -78,8 +80,8 @@ export default function Footer() {
             &copy; {new Date().getFullYear()} Lead Events. All rights reserved.
           </p>
           <div className="flex gap-6 text-xs tracking-wider uppercase text-brand-text/40">
-            <a href="#" className="hover:text-white transition-colors cursor-hover-target">Privacy</a>
-            <a href="#" className="hover:text-white transition-colors cursor-hover-target">Terms</a>
+            <a href="#" onClick={(e) => e.preventDefault()} className="hover:text-white transition-colors cursor-hover-target">Privacy</a>
+            <a href="#" onClick={(e) => e.preventDefault()} className="hover:text-white transition-colors cursor-hover-target">Terms</a>
           </div>
         </div>
       </div>

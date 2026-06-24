@@ -32,16 +32,16 @@ export default function Navbar() {
   return (
     <header 
       className={`fixed top-0 w-full z-50 transition-all duration-500 ${
-        isScrolled ? 'bg-brand-dark/80 backdrop-blur-xl border-b border-white/5 py-4' : 'bg-transparent py-8'
+        isScrolled ? 'bg-white/5 backdrop-blur-xl border-b border-white/10 py-2' : 'bg-transparent backdrop-blur-sm py-3'
       }`}
     >
       <div className="container mx-auto px-6 lg:px-12 flex items-center justify-between">
         {/* Logo */}
-        <Link to="/" className="flex items-center gap-2 z-50 cursor-hover-target group">
+        <Link to="/" onClick={(e) => e.preventDefault()} className="flex items-center gap-2 z-50 cursor-hover-target group">
           <img 
             src="/logo.png" 
             alt="Lead Events Logo" 
-            className="h-14 md:h-20 w-auto object-contain transition-transform duration-300 group-hover:scale-105" 
+            className="h-20 md:h-28 w-auto object-contain transition-transform duration-300 group-hover:scale-105 -mb-8 -mt-6" 
           />
         </Link>
 
@@ -51,6 +51,7 @@ export default function Navbar() {
             <Link 
               key={link.name} 
               to={link.path}
+              onClick={(e) => e.preventDefault()}
               className={`text-xs font-bold uppercase tracking-[0.15em] transition-all duration-300 cursor-hover-target relative group ${
                 location.pathname === link.path ? 'text-white' : 'text-brand-text/60 hover:text-white'
               }`}
@@ -61,7 +62,7 @@ export default function Navbar() {
               }`} />
             </Link>
           ))}
-          <Button to="/contact" variant="primary" className="py-2.5 px-6 ml-2 text-xs uppercase tracking-[0.1em] rounded-none cursor-hover-target">
+          <Button to="/contact" variant="primary" onClick={(e) => e.preventDefault()} className="py-2.5 px-6 ml-2 text-xs uppercase tracking-[0.1em] rounded-none cursor-hover-target">
             Plan Event
           </Button>
         </nav>
