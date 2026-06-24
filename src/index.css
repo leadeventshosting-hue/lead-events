@@ -1,0 +1,121 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@200;300;400;500;600;700;800;900&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply bg-brand-dark text-brand-text font-sans antialiased selection:bg-brand-red selection:text-white;
+    /* Hide default cursor to use custom cursor on non-touch devices */
+    cursor: none;
+  }
+
+  /* Make links and buttons also hide default cursor */
+  a, button, input, textarea, select {
+    cursor: none;
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-bold tracking-tighter text-white;
+  }
+
+  /* Red Scrollbar — WebKit (Chrome, Edge, Safari) */
+  ::-webkit-scrollbar {
+    width: 6px;
+  }
+  ::-webkit-scrollbar-track {
+    background: #0a0a0a;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: #ED1C24;
+    border-radius: 3px;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: #FF3B43;
+  }
+
+  /* Red Scrollbar — Firefox */
+  * {
+    scrollbar-width: thin;
+    scrollbar-color: #ED1C24 #0a0a0a;
+  }
+}
+
+@layer components {
+  .glass-card {
+    @apply bg-brand-gray/40 backdrop-blur-xl border border-white/5;
+  }
+  
+  .text-outline {
+    color: transparent;
+    -webkit-text-stroke: 1px rgba(255, 255, 255, 0.4);
+    transition: all 0.5s ease;
+  }
+
+  .text-outline:hover {
+    color: white;
+    -webkit-text-stroke: 1px white;
+  }
+
+  .text-gradient {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-white via-brand-text to-brand-muted;
+  }
+  
+  .text-gradient-red {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-brand-red to-brand-darkRed;
+  }
+
+  /* Noise Overlay */
+  .noise-bg {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    pointer-events: none;
+    z-index: 9999;
+    opacity: 0.03;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+  }
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #000000;
+}
+::-webkit-scrollbar-thumb {
+  background: #151515;
+  border-radius: 10px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #c62828;
+}
+
+/* Custom Locomotive-style smooth scrolling class for wrapper */
+html {
+  scroll-behavior: smooth;
+}
+
+@keyframes marquee {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-marquee {
+  display: flex;
+  width: max-content;
+  animation: marquee 45s linear infinite;
+}
+
+.marquee-container:hover .animate-marquee {
+  animation-play-state: paused;
+}
+
