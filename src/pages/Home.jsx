@@ -430,18 +430,18 @@ export default function Home() {
         aria-label="Our Event Management Services in Dubai & UAE"
         itemScope
         itemType="https://schema.org/ItemList"
-        className="pt-12 pb-12 bg-[#050505] relative z-10 border-t border-white/5 overflow-hidden"
+        className="pt-12 pb-12 bg-[#fbf8f3] relative z-10 border-t border-[#fbf8f3] overflow-hidden"
       >
         {/* Hidden SEO metadata for crawlers */}
         <meta itemProp="name" content="Lead Events UAE — Event Management Services" />
         <meta itemProp="description" content="Lead Events provides corporate event management, brand activations, and luxury wedding planning services in Dubai and across the UAE." />
 
-        <div className="absolute inset-0 bg-noise opacity-10 mix-blend-overlay pointer-events-none" />
+        <div className="absolute inset-0 bg-noise opacity-0 pointer-events-none" />
         <div className="container mx-auto px-6 lg:px-12 relative z-10">
           <div className="flex justify-between items-end mb-3">
             <div>
               <span className="text-brand-red font-bold text-xs tracking-[0.25em] uppercase block mb-2">Event Management Services Dubai &amp; UAE</span>
-              <h2 className="text-5xl md:text-7xl font-black uppercase tracking-tighter">
+              <h2 className="text-5xl md:text-7xl font-black uppercase tracking-tighter text-brand-dark">
                 Our <br/><span className="text-brand-red">Expertise</span>
               </h2>
               {/* Hidden keyword-rich subtitle for SEO crawlers */}
@@ -452,7 +452,7 @@ export default function Home() {
             <a
               href="/services"
               aria-label="View all event management services offered by Lead Events UAE"
-              className="hidden md:inline-flex items-center text-lg font-bold text-white hover:text-brand-red transition-colors cursor-hover-target"
+              className="hidden md:inline-flex items-center text-lg font-bold text-brand-dark hover:text-brand-red transition-colors cursor-hover-target"
             >
               View all services <ArrowRight className="ml-2 w-5 h-5" />
             </a>
@@ -475,8 +475,8 @@ export default function Home() {
                   onMouseEnter={() => setHoveredExpertise(index)}
                   onClick={() => setHoveredExpertise(index)}
                   aria-label={item.seoTitle}
-                  className={`relative overflow-hidden rounded-2xl cursor-hover-target transition-all duration-700 ease-[0.16,1,0.3,1] border border-white/10 flex flex-col justify-end group ${
-                    isActive ? 'flex-[3] bg-brand-red/10' : 'flex-[1] bg-brand-dark'
+                  className={`relative overflow-hidden rounded-2xl cursor-hover-target transition-all duration-700 ease-[0.16,1,0.3,1] border border-black/10 flex flex-col justify-end group bg-white ${
+                    isActive ? 'flex-[3]' : 'flex-[1]'
                   }`}
                 >
                   {/* Hidden SEO microdata */}
@@ -492,7 +492,7 @@ export default function Home() {
                       alt={`${item.seoTitle} — Lead Events UAE`}
                       loading="lazy"
                       className={`w-full h-full object-cover transition-all duration-1000 ease-out ${
-                        isActive ? 'scale-105 opacity-60 grayscale-0' : 'scale-100 opacity-30 grayscale'
+                        isActive ? 'scale-105 opacity-100' : 'scale-100 opacity-100'
                       }`}
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-transparent" />
@@ -543,7 +543,7 @@ export default function Home() {
             <a
               href="/services"
               aria-label="View all event management services offered by Lead Events UAE"
-              className="inline-flex items-center text-base font-bold text-white hover:text-brand-red transition-colors cursor-hover-target"
+              className="inline-flex items-center text-base font-bold text-brand-dark hover:text-brand-red transition-colors cursor-hover-target"
             >
               View all services <ArrowRight className="ml-2 w-4 h-4" />
             </a>
@@ -552,7 +552,8 @@ export default function Home() {
       </section>
 
       {/* Elegant Editorial Testimonials Section */}
-      <section className="py-16 bg-[#050505] overflow-hidden relative z-10 border-t border-white/5">
+      <section className="py-16 bg-[#fbf8f3] overflow-hidden relative z-10 border-t border-black/10">
+        <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-brand-red/45 to-transparent" />
         {/* Soft Red Radial Glow in center */}
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-brand-red/5 rounded-full blur-[120px] pointer-events-none" />
         
@@ -562,7 +563,7 @@ export default function Home() {
           animate={{ rotate: 360 }}
           transition={{ duration: 50, repeat: Infinity, ease: "linear" }}
         >
-          <svg viewBox="0 0 200 200" className="w-full h-full text-white">
+          <svg viewBox="0 0 200 200" className="w-full h-full text-brand-dark">
             <circle cx="100" cy="100" r="85" fill="none" stroke="currentColor" strokeWidth="0.3" strokeDasharray="3 3" />
             <circle cx="100" cy="100" r="65" fill="none" stroke="currentColor" strokeWidth="0.1" />
             <circle cx="100" cy="100" r="45" fill="none" stroke="currentColor" strokeWidth="0.2" strokeDasharray="1 5" />
@@ -594,10 +595,10 @@ export default function Home() {
         </div>
 
         <div className="container mx-auto px-6 lg:px-12 relative z-10 text-center">
-          <span className="text-brand-text/50 font-bold text-xs tracking-[0.3em] uppercase block mb-3">
+          <span className="text-brand-red font-black text-xs tracking-[0.3em] uppercase block mb-3">
             CLIENT EXPERIENCES
           </span>
-          <h2 className="text-4xl md:text-6xl font-serif italic text-white tracking-tight mb-10 font-light capitalize">
+          <h2 className="text-4xl md:text-6xl font-serif italic text-brand-dark tracking-tight mb-10 font-light capitalize">
             What Our Clients Say
           </h2>
 
@@ -608,7 +609,7 @@ export default function Home() {
             <button
               onClick={handlePrevTestimonial}
               aria-label="Previous Testimonial"
-              className="absolute left-0 md:-left-4 z-20 p-4 rounded-none border border-white/10 bg-white/5 backdrop-blur-md text-white hover:text-brand-red hover:border-brand-red hover:shadow-[0_0_25px_rgba(237,28,36,0.3)] transition-all duration-300 transform -translate-y-1/2 top-1/2 scale-90 md:scale-100 hover:scale-105 active:scale-95 cursor-hover-target"
+              className="absolute left-0 md:-left-4 z-20 p-4 rounded-none border border-black/10 bg-white text-brand-dark hover:text-brand-red hover:border-brand-red hover:shadow-[0_0_25px_rgba(237,28,36,0.15)] transition-all duration-300 transform -translate-y-1/2 top-1/2 scale-90 md:scale-100 hover:scale-105 active:scale-95 cursor-hover-target"
             >
               <ChevronLeft className="w-6 h-6" />
             </button>
@@ -635,12 +636,12 @@ export default function Home() {
                   {/* Large Stylized Quotation Mark */}
                   <span className="text-brand-red/10 text-8xl md:text-9xl font-serif absolute -top-12 md:-top-16 select-none pointer-events-none">“</span>
                   
-                  <p itemProp="reviewBody" className="text-lg md:text-2xl font-serif italic text-white/85 leading-relaxed mb-10 max-w-[800px] relative z-10">
+                  <p itemProp="reviewBody" className="text-lg md:text-2xl font-serif italic text-brand-dark/85 leading-relaxed mb-10 max-w-[800px] relative z-10">
                     "{testimonials[activeTestimonial].quote}"
                   </p>
                   
                   <div itemProp="author" itemScope itemType="https://schema.org/Person" className="flex flex-col items-center">
-                    <h4 itemProp="name" className="text-white font-bold text-base md:text-lg tracking-wider">— {testimonials[activeTestimonial].name}</h4>
+                    <h4 itemProp="name" className="text-brand-dark font-bold text-base md:text-lg tracking-wider">— {testimonials[activeTestimonial].name}</h4>
                   </div>
                   
                   {/* Rating microdata for SEO */}
@@ -656,7 +657,7 @@ export default function Home() {
             <button
               onClick={handleNextTestimonial}
               aria-label="Next Testimonial"
-              className="absolute right-0 md:-right-4 z-20 p-4 rounded-none border border-white/10 bg-white/5 backdrop-blur-md text-white hover:text-brand-red hover:border-brand-red hover:shadow-[0_0_25px_rgba(237,28,36,0.3)] transition-all duration-300 transform -translate-y-1/2 top-1/2 scale-90 md:scale-100 hover:scale-105 active:scale-95 cursor-hover-target"
+              className="absolute right-0 md:-right-4 z-20 p-4 rounded-none border border-black/10 bg-white text-brand-dark hover:text-brand-red hover:border-brand-red hover:shadow-[0_0_25px_rgba(237,28,36,0.15)] transition-all duration-300 transform -translate-y-1/2 top-1/2 scale-90 md:scale-100 hover:scale-105 active:scale-95 cursor-hover-target"
             >
               <ChevronRight className="w-6 h-6" />
             </button>
@@ -666,14 +667,14 @@ export default function Home() {
       </section>
 
       {/* Premium Cinematic Cardless Stats Section */}
-      <section className="py-16 relative z-10 border-y border-white/5 overflow-hidden flex items-center justify-center min-h-[320px]">
+      <section className="py-16 bg-[#fbf8f3] relative z-10 border-y border-black/10 overflow-hidden flex items-center justify-center min-h-[320px]">
+        <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-brand-red/45 to-transparent" />
         {/* Cinematic Background Image */}
-        <div className="absolute inset-0 bg-[url('/home/stats_background_premium.png')] bg-cover bg-center opacity-40 mix-blend-screen pointer-events-none" />
+        <div className="absolute inset-0 bg-[url('/home/stats_background_premium.png')] bg-cover bg-center opacity-0 pointer-events-none" />
         
         {/* Deep Gradient Overlays for Seamless Integration */}
-        <div className="absolute inset-0 bg-gradient-to-b from-[#050505] via-[#050505]/60 to-[#050505] z-0" />
-        <div className="absolute inset-0 bg-gradient-to-r from-[#050505] via-transparent to-[#050505] z-0 opacity-80 hidden md:block" />
-        <div className="absolute inset-0 bg-noise opacity-15 mix-blend-overlay z-0" />
+        <div className="absolute inset-0 bg-[#fbf8f3] z-0" />
+        <div className="absolute inset-0 bg-noise opacity-0 z-0" />
         
         <div className="container mx-auto px-6 lg:px-12 relative z-10">
           <div className="flex flex-col md:flex-row justify-between items-center gap-16 md:gap-4 relative w-full">
@@ -690,24 +691,24 @@ export default function Home() {
                   <stat.icon className="w-8 h-8 md:w-10 md:h-10 text-brand-red/80 mb-6 group-hover:text-brand-red transition-colors duration-500 drop-shadow-[0_0_15px_rgba(237,28,36,0.5)] group-hover:scale-110" />
                   
                   {/* Massive Glowing Number */}
-                  <div className="text-6xl sm:text-7xl md:text-6xl lg:text-8xl font-black text-transparent bg-clip-text bg-gradient-to-b from-white via-white/90 to-white/30 tracking-tighter mb-4 drop-shadow-2xl">
+                  <div className="text-6xl sm:text-7xl md:text-6xl lg:text-8xl font-black text-brand-dark tracking-tighter mb-4">
                     {stat.value}
                   </div>
                   
                   {/* Elegant Label */}
-                  <div className="text-brand-text/70 font-medium text-sm md:text-base tracking-[0.2em] uppercase max-w-[200px]">
+                  <div className="text-brand-dark/70 font-medium text-sm md:text-base tracking-[0.2em] uppercase max-w-[200px]">
                     {stat.label}
                   </div>
                 </motion.div>
 
                 {/* Elegant Vertical Divider (Only for Desktop, skip last) */}
                 {index !== stats.length - 1 && (
-                  <div className="hidden md:block absolute -right-2 lg:right-0 top-1/2 -translate-y-1/2 w-[1px] h-32 bg-gradient-to-b from-transparent via-white/10 to-transparent" />
+                  <div className="hidden md:block absolute -right-2 lg:right-0 top-1/2 -translate-y-1/2 w-[1px] h-32 bg-gradient-to-b from-transparent via-black/10 to-transparent" />
                 )}
                 
                 {/* Elegant Horizontal Divider (Only for Mobile, skip last) */}
                 {index !== stats.length - 1 && (
-                  <div className="block md:hidden absolute -bottom-8 left-1/2 -translate-x-1/2 w-32 h-[1px] bg-gradient-to-r from-transparent via-white/10 to-transparent" />
+                  <div className="block md:hidden absolute -bottom-8 left-1/2 -translate-x-1/2 w-32 h-[1px] bg-gradient-to-r from-transparent via-black/10 to-transparent" />
                 )}
               </div>
             ))}
@@ -717,20 +718,21 @@ export default function Home() {
       </section>
 
       {/* Partners/Clients Logo Section */}
-      <section className="py-12 bg-brand-dark/50 relative z-10 border-t border-white/5 overflow-hidden">
+      <section className="py-12 bg-[#fbf8f3] relative z-10 border-t border-black/10 overflow-hidden">
+        <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-brand-red/45 to-transparent" />
         <div className="container mx-auto px-6 lg:px-12 mb-8 text-center">
-          <span className="text-brand-text/40 font-bold text-xs tracking-[0.3em] uppercase block">
+          <span className="text-brand-red font-black text-xs tracking-[0.3em] uppercase block">
             POWERING EVENTS FOR GLOBAL BRANDS
           </span>
         </div>
         
         {/* Infinite Partners Marquee */}
-        <div className="w-full overflow-hidden relative py-4 opacity-50 hover:opacity-100 transition-opacity duration-500">
+        <div className="w-full overflow-hidden relative py-4">
           <div className="animate-marquee flex gap-16 items-center px-4">
             {marqueePartners.map((partner, idx) => (
               <span 
                 key={idx} 
-                className="text-2xl md:text-3xl font-black tracking-[0.25em] uppercase text-white/40 hover:text-white transition-colors duration-300 shrink-0 select-none cursor-default"
+                className="text-2xl md:text-3xl font-black tracking-[0.25em] uppercase text-black hover:text-brand-red transition-colors duration-300 shrink-0 select-none cursor-default"
               >
                 {partner}
               </span>

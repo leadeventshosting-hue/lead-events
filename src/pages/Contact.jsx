@@ -4,6 +4,20 @@ import Button from '../components/ui/Button';
 import SEO from '../components/SEO';
 
 export default function Contact() {
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    const data = new FormData(e.currentTarget);
+    const body = [
+      `Name: ${data.get('firstName') || ''} ${data.get('lastName') || ''}`,
+      `Email: ${data.get('email') || ''}`,
+      `Phone: ${data.get('phone') || ''}`,
+      '',
+      data.get('message') || '',
+    ].join('\n');
+
+    window.location.href = `mailto:info@leadevents.com?subject=${encodeURIComponent('New Event Inquiry')}&body=${encodeURIComponent(body)}`;
+  };
+
   return (
     <>
       <SEO title="Contact Us" />
@@ -34,31 +48,31 @@ export default function Contact() {
               initial={{ opacity: 0, x: -30 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ duration: 0.8 }}
               className="lg:col-span-7"
             >
-              <form className="space-y-12" onSubmit={(e) => e.preventDefault()}>
+              <form className="space-y-12" onSubmit={handleSubmit}>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
                   <div className="relative group">
-                    <input type="text" className="w-full bg-transparent border-b border-white/20 pb-4 text-white placeholder-transparent focus:outline-none focus:border-brand-red peer cursor-hover-target" placeholder="First Name" />
+                    <input name="firstName" type="text" className="w-full bg-transparent border-b border-white/20 pb-4 text-white placeholder-transparent focus:outline-none focus:border-brand-red peer cursor-hover-target" placeholder="First Name" />
                     <label className="absolute left-0 -top-6 text-sm font-bold tracking-widest uppercase text-brand-text/40 transition-all peer-placeholder-shown:text-lg peer-placeholder-shown:top-0 peer-placeholder-shown:font-light peer-focus:-top-6 peer-focus:text-sm peer-focus:font-bold peer-focus:text-brand-red">First Name</label>
                   </div>
                   <div className="relative group">
-                    <input type="text" className="w-full bg-transparent border-b border-white/20 pb-4 text-white placeholder-transparent focus:outline-none focus:border-brand-red peer cursor-hover-target" placeholder="Last Name" />
+                    <input name="lastName" type="text" className="w-full bg-transparent border-b border-white/20 pb-4 text-white placeholder-transparent focus:outline-none focus:border-brand-red peer cursor-hover-target" placeholder="Last Name" />
                     <label className="absolute left-0 -top-6 text-sm font-bold tracking-widest uppercase text-brand-text/40 transition-all peer-placeholder-shown:text-lg peer-placeholder-shown:top-0 peer-placeholder-shown:font-light peer-focus:-top-6 peer-focus:text-sm peer-focus:font-bold peer-focus:text-brand-red">Last Name</label>
                   </div>
                 </div>
 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
                   <div className="relative group">
-                    <input type="email" className="w-full bg-transparent border-b border-white/20 pb-4 text-white placeholder-transparent focus:outline-none focus:border-brand-red peer cursor-hover-target" placeholder="Email" />
+                    <input name="email" type="email" className="w-full bg-transparent border-b border-white/20 pb-4 text-white placeholder-transparent focus:outline-none focus:border-brand-red peer cursor-hover-target" placeholder="Email" />
                     <label className="absolute left-0 -top-6 text-sm font-bold tracking-widest uppercase text-brand-text/40 transition-all peer-placeholder-shown:text-lg peer-placeholder-shown:top-0 peer-placeholder-shown:font-light peer-focus:-top-6 peer-focus:text-sm peer-focus:font-bold peer-focus:text-brand-red">Email Address</label>
                   </div>
                   <div className="relative group">
-                    <input type="tel" className="w-full bg-transparent border-b border-white/20 pb-4 text-white placeholder-transparent focus:outline-none focus:border-brand-red peer cursor-hover-target" placeholder="Phone" />
+                    <input name="phone" type="tel" className="w-full bg-transparent border-b border-white/20 pb-4 text-white placeholder-transparent focus:outline-none focus:border-brand-red peer cursor-hover-target" placeholder="Phone" />
                     <label className="absolute left-0 -top-6 text-sm font-bold tracking-widest uppercase text-brand-text/40 transition-all peer-placeholder-shown:text-lg peer-placeholder-shown:top-0 peer-placeholder-shown:font-light peer-focus:-top-6 peer-focus:text-sm peer-focus:font-bold peer-focus:text-brand-red">Phone Number</label>
                   </div>
                 </div>
 
                 <div className="relative group">
-                  <textarea rows={4} className="w-full bg-transparent border-b border-white/20 pb-4 text-white placeholder-transparent focus:outline-none focus:border-brand-red peer cursor-hover-target resize-none" placeholder="Message"></textarea>
+                  <textarea name="message" rows={4} className="w-full bg-transparent border-b border-white/20 pb-4 text-white placeholder-transparent focus:outline-none focus:border-brand-red peer cursor-hover-target resize-none" placeholder="Message"></textarea>
                   <label className="absolute left-0 -top-6 text-sm font-bold tracking-widest uppercase text-brand-text/40 transition-all peer-placeholder-shown:text-lg peer-placeholder-shown:top-0 peer-placeholder-shown:font-light peer-focus:-top-6 peer-focus:text-sm peer-focus:font-bold peer-focus:text-brand-red">Project Details</label>
                 </div>
 

@@ -25,7 +25,7 @@
     width: 6px;
   }
   ::-webkit-scrollbar-track {
-    background: #0a0a0a;
+    background: #ffffff;
   }
   ::-webkit-scrollbar-thumb {
     background: #ED1C24;
@@ -38,7 +38,7 @@
   /* Red Scrollbar — Firefox */
   * {
     scrollbar-width: thin;
-    scrollbar-color: #ED1C24 #0a0a0a;
+    scrollbar-color: #ED1C24 #ffffff;
   }
 }
 
@@ -85,10 +85,10 @@
   width: 6px;
 }
 ::-webkit-scrollbar-track {
-  background: #000000;
+  background: #ffffff;
 }
 ::-webkit-scrollbar-thumb {
-  background: #151515;
+  background: #ED1C24;
   border-radius: 10px;
 }
 ::-webkit-scrollbar-thumb:hover {

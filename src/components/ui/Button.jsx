@@ -34,7 +34,7 @@ export default function Button({ children, variant = 'primary', to, href, classN
 
   if (to) {
     return (
-      <Link to={to} className={classes} onClick={(e) => e.preventDefault()} {...props}>
+      <Link to={to} className={classes} onClick={onClick} {...props}>
         <motion.div {...motionProps} className="w-full h-full flex items-center justify-center">
           {innerContent}
         </motion.div>
@@ -44,7 +44,7 @@ export default function Button({ children, variant = 'primary', to, href, classN
 
   if (href) {
     return (
-      <a href={href} className={classes} onClick={(e) => e.preventDefault()} {...props}>
+      <a href={href} className={classes} onClick={onClick} {...props}>
         <motion.div {...motionProps} className="w-full h-full flex items-center justify-center">
           {innerContent}
         </motion.div>
