@@ -28,7 +28,6 @@ export default function Navbar() {
     { name: 'Portfolio', path: '/portfolio' },
     { name: 'Contact', path: '/contact' },
   ];
-  const isFunctionalPath = (path) => path === '/' || path === '/about';
 
   return (
     <header 
@@ -52,9 +51,6 @@ export default function Navbar() {
             <Link 
               key={link.name} 
               to={link.path}
-              onClick={(event) => {
-                if (!isFunctionalPath(link.path)) event.preventDefault();
-              }}
               className={`text-xs font-bold uppercase tracking-[0.15em] transition-all duration-300 cursor-hover-target relative group ${
                 location.pathname === link.path
                   ? isScrolled ? 'text-brand-red' : 'text-white'
@@ -67,7 +63,7 @@ export default function Navbar() {
               }`} />
             </Link>
           ))}
-          <Button to="/contact" onClick={(event) => event.preventDefault()} variant="primary" className="py-2.5 px-6 ml-2 text-xs uppercase tracking-[0.1em] rounded-none cursor-hover-target">
+          <Button to="/contact" variant="primary" className="py-2.5 px-6 ml-2 text-xs uppercase tracking-[0.1em] rounded-none cursor-hover-target">
             Plan Event
           </Button>
         </nav>
@@ -102,9 +98,6 @@ export default function Navbar() {
                 >
                   <Link 
                     to={link.path}
-                    onClick={(event) => {
-                      if (!isFunctionalPath(link.path)) event.preventDefault();
-                    }}
                     className={`text-5xl font-black uppercase tracking-tighter hover:text-brand-red transition-colors ${
                       location.pathname === link.path ? 'text-brand-red text-outline' : 'text-white'
                     }`}

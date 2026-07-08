@@ -14,8 +14,6 @@ const LinkedinIcon = () => (
 );
 
 export default function Footer() {
-  const isFunctionalPath = (path) => path === '/' || path === '/about';
-
   return (
     <footer className="bg-[#fbf8f3] pt-8 pb-6 border-t border-black/10 relative overflow-hidden mt-auto text-brand-dark">
       {/* Background Glow */}
@@ -52,9 +50,6 @@ export default function Footer() {
                 <li key={link}>
                   <Link
                     to={`/${link.toLowerCase()}`}
-                    onClick={(event) => {
-                      if (!isFunctionalPath(`/${link.toLowerCase()}`)) event.preventDefault();
-                    }}
                     className="text-brand-dark/60 hover:text-brand-red transition-colors flex items-center group cursor-hover-target text-sm tracking-wide"
                   >
                     {link} <ArrowRight className="w-3 h-3 ml-2 opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all" />
@@ -89,8 +84,8 @@ export default function Footer() {
             &copy; {new Date().getFullYear()} Lead Events. All rights reserved.
           </p>
           <div className="flex gap-6 text-xs tracking-wider uppercase text-brand-dark/45">
-            <Link to="/privacy" onClick={(event) => event.preventDefault()} className="hover:text-brand-red transition-colors cursor-hover-target">Privacy</Link>
-            <Link to="/terms" onClick={(event) => event.preventDefault()} className="hover:text-brand-red transition-colors cursor-hover-target">Terms</Link>
+            <Link to="/privacy" className="hover:text-brand-red transition-colors cursor-hover-target">Privacy</Link>
+            <Link to="/terms" className="hover:text-brand-red transition-colors cursor-hover-target">Terms</Link>
           </div>
         </div>
       </div>

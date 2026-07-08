@@ -1,4 +1,5 @@
 import { useRef, useState } from 'react';
+import { Link } from 'react-router-dom';
 import { motion, useScroll, useTransform, AnimatePresence } from 'framer-motion';
 import { ArrowRight, Star, Calendar, Users, Briefcase, Award, ChevronLeft, ChevronRight } from 'lucide-react';
 import { Helmet } from 'react-helmet-async';
@@ -449,13 +450,13 @@ export default function Home() {
                 Lead Events is a leading event management company in Dubai specializing in corporate events, brand activations, luxury weddings, and live experiences across the UAE.
               </p>
             </div>
-            <a
-              href="/services"
+            <Link
+              to="/services"
               aria-label="View all event management services offered by Lead Events UAE"
               className="hidden md:inline-flex items-center text-lg font-bold text-brand-dark hover:text-brand-red transition-colors cursor-hover-target"
             >
               View all services <ArrowRight className="ml-2 w-5 h-5" />
-            </a>
+            </Link>
           </div>
           
           {/* Expanding Cards Layout */}
@@ -540,13 +541,13 @@ export default function Home() {
           </div>
           
           <div className="mt-8 text-center md:hidden">
-            <a
-              href="/services"
+            <Link
+              to="/services"
               aria-label="View all event management services offered by Lead Events UAE"
               className="inline-flex items-center text-base font-bold text-brand-dark hover:text-brand-red transition-colors cursor-hover-target"
             >
               View all services <ArrowRight className="ml-2 w-4 h-4" />
-            </a>
+            </Link>
           </div>
         </div>
       </section>
