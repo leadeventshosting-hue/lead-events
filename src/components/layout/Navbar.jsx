@@ -8,6 +8,7 @@ export default function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const location = useLocation();
+  const isLightHeader = isScrolled;
 
   useEffect(() => {
     const handleScroll = () => {
@@ -53,8 +54,8 @@ export default function Navbar() {
               to={link.path}
               className={`text-xs font-bold uppercase tracking-[0.15em] transition-all duration-300 cursor-hover-target relative group ${
                 location.pathname === link.path
-                  ? isScrolled ? 'text-brand-red' : 'text-white'
-                  : isScrolled ? 'text-brand-dark/70 hover:text-brand-red' : 'text-brand-text/70 hover:text-white'
+                  ? isLightHeader ? 'text-brand-red' : 'text-white'
+                  : isLightHeader ? 'text-brand-dark/70 hover:text-brand-red' : 'text-brand-text/70 hover:text-white'
               }`}
             >
               {link.name}
@@ -71,7 +72,7 @@ export default function Navbar() {
         {/* Mobile Menu Button */}
         <button 
           className={`md:hidden z-50 relative cursor-hover-target transition-colors ${
-            isScrolled ? 'text-brand-dark' : 'text-white'
+            isLightHeader ? 'text-brand-dark' : 'text-white'
           }`}
           onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
         >

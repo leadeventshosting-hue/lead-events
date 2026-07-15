@@ -1,124 +1,288 @@
-import { motion, useScroll, useTransform } from 'framer-motion';
+import { useRef } from 'react';
+import { motion, useScroll, useTransform, useInView } from 'framer-motion';
 import { Helmet } from 'react-helmet-async';
 import {
   ArrowRight,
-  BadgeCheck,
   Briefcase,
-  CalendarCheck,
   Clapperboard,
   Headphones,
-  Lightbulb,
   MonitorPlay,
   Sparkles,
-  Users,
   Volume2,
+  Megaphone,
+  Hammer,
+  ScreenShare,
 } from 'lucide-react';
-import Button from '../components/ui/Button';
+import { Link } from 'react-router-dom';
 import SEO from '../components/SEO';
 
+/* ─── tiny helpers ─────────────────────────────────────────────── */
+function RevealText({ children, delay = 0, className = '' }) {
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: true, margin: '-80px' });
+  return (
+    <div ref={ref} className={`overflow-hidden ${className}`}>
+      <motion.div
+        initial={{ y: '110%', opacity: 0 }}
+        animate={isInView ? { y: 0, opacity: 1 } : {}}
+        transition={{ duration: 0.85, ease: [0.16, 1, 0.3, 1], delay }}
+      >
+        {children}
+      </motion.div>
+    </div>
+  );
+}
+
+function FadeUp({ children, delay = 0, className = '' }) {
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: true, margin: '-60px' });
+  return (
+    <motion.div
+      ref={ref}
+      initial={{ opacity: 0, y: 40 }}
+      animate={isInView ? { opacity: 1, y: 0 } : {}}
+      transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1], delay }}
+      className={className}
+    >
+      {children}
+    </motion.div>
+  );
+}
+
+/* ─── data ─────────────────────────────────────────────────────── */
+const services = [
+  {
+    number: '01',
+    title: 'Corporate Events',
+    slug: 'corporate-events',
+    icon: Briefcase,
+    image: '/services/1.png',
+    cta: 'Plan Your Event',
+    label: 'Strategy & Production',
+    description:
+      'We deliver conferences, seminars, product launches, award ceremonies, and executive summits. Strategic event solutions that strengthen brands and deliver measurable outcomes through seamless planning and world-class production.',
+    features: ['Corporate Conferences', 'Annual Meetings', 'Product Launches', 'Award Ceremonies', 'Executive Summits', 'Gala Dinners'],
+  },
+  {
+    number: '02',
+    title: 'Audio Visual Rental',
+    slug: 'audio-visual-rental',
+    icon: Volume2,
+    image: '/services/2.png',
+    cta: 'Request Equipment',
+    label: 'Technical Excellence',
+    description:
+      'Professional AV rental services across the UAE — LED video walls, sound systems, live streaming rigs, projectors, lighting, staging, and expert technical crew for every scale of event.',
+    features: ['LED Walls', 'Professional Sound', 'Lighting Systems', 'Live Streaming', 'Projection Systems', 'Technical Crew'],
+  },
+  {
+    number: '03',
+    title: 'Exhibition & Trade Shows',
+    slug: 'exhibition-trade-shows',
+    icon: MonitorPlay,
+    image: '/services/3.png',
+    cta: 'Build Your Stand',
+    label: 'Brand Presence',
+    description:
+      'We design, build, and manage premium exhibition stands, trade show booths, product showcases, and experiential brand spaces that attract visitors and generate meaningful engagement.',
+    features: ['Booth Design', 'Stand Construction', 'Visitor Engagement', 'Product Displays', 'Logistics', 'On-site Management'],
+  },
+  {
+    number: '04',
+    title: 'Entertainment',
+    slug: 'entertainment',
+    icon: Clapperboard,
+    image: '/services/4.png',
+    cta: 'Book Entertainment',
+    label: 'Live Experiences',
+    description:
+      'Premium entertainment services including live performers, celebrity appearances, DJs, musicians, cultural shows, and customized stage productions for corporate events, weddings, and luxury celebrations.',
+    features: ['Live Bands', 'DJs', 'Celebrity Talent', 'Cultural Shows', 'Interactive Entertainment', 'Stage Performances'],
+  },
+  {
+    number: '05',
+    title: 'Luxury Weddings',
+    slug: 'luxury-weddings',
+    icon: Sparkles,
+    image: '/services/5.png',
+    cta: 'Plan Your Wedding',
+    label: 'Timeless Elegance',
+    description:
+      'Elegant wedding experiences through luxury planning, bespoke decor, entertainment, venue styling, floral concepts, lighting design, and complete wedding management. Every detail crafted to reflect your vision.',
+    features: ['Wedding Planning', 'Luxury Decor', 'Floral Design', 'Entertainment', 'Lighting', 'Guest Experience'],
+  },
+  {
+    number: '06',
+    title: 'AV Installations',
+    slug: 'audio-visual-installations',
+    icon: Headphones,
+    image: '/services/6.png',
+    cta: 'Talk To Our Experts',
+    label: 'Permanent Solutions',
+    description:
+      'Permanent AV solutions for hotels, conference centers, auditoriums, retail environments, and offices. We design and install high-performance audiovisual systems tailored to your business requirements.',
+    features: ['Meeting Rooms', 'Auditoriums', 'LED Installations', 'Digital Signage', 'Control Systems', 'Maintenance'],
+  },
+  {
+    number: '07',
+    title: 'Brand Activation',
+    slug: 'brand-activation',
+    icon: Megaphone,
+    image: '/services/7.png',
+    cta: 'Activate Your Brand',
+    label: 'Audience Engagement',
+    description:
+      'We create immersive brand activations, product experiences, pop-ups, and promotional campaigns that connect brands with audiences through memorable, measurable live experiences across the UAE.',
+    features: ['Experiential Marketing', 'Product Launches', 'Pop-up Experiences', 'Roadshows', 'Promotional Campaigns', 'Audience Engagement'],
+  },
+  {
+    number: '08',
+    title: 'Staging & Fabrication',
+    slug: 'staging-fabrication',
+    icon: Hammer,
+    image: '/services/8.png',
+    cta: 'Build Your Stage',
+    label: 'Custom Production',
+    description:
+      'From custom stages and scenic structures to branded installations and event environments, our staging and fabrication team delivers safe, precise, high-quality builds tailored to every concept and venue.',
+    features: ['Custom Staging', 'Scenic Fabrication', 'Branded Structures', 'Set Construction', 'Event Backdrops', 'On-site Installation'],
+  },
+  {
+    number: '09',
+    title: 'LED Screen Rental',
+    slug: 'led-screen-rental',
+    icon: ScreenShare,
+    image: '/services/9.png',
+    cta: 'Rent An LED Screen',
+    label: 'High-Impact Visuals',
+    description:
+      'High-resolution indoor and outdoor LED screen rental for conferences, exhibitions, concerts, weddings, and brand activations, complete with installation, content support, and expert technical operation.',
+    features: ['Indoor LED Screens', 'Outdoor LED Screens', 'Video Walls', 'Custom Screen Sizes', 'Content Support', 'Technical Crew'],
+  },
+];
+
+/* ─── SERVICE CARD ──────────────────────────────────────────────── */
+function ServiceCard({ service, index }) {
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: true, margin: '-100px' });
+  const isEven = index % 2 === 0;
+
+  return (
+    <motion.article
+      ref={ref}
+      id={service.slug}
+      initial={{ opacity: 0 }}
+      animate={isInView ? { opacity: 1 } : {}}
+      transition={{ duration: 0.6 }}
+      className="relative grid grid-cols-1 lg:grid-cols-2 min-h-[600px] group border-b border-black/10 last:border-b-0"
+      itemScope
+      itemType="https://schema.org/Service"
+    >
+      <meta itemProp="serviceType" content={service.title} />
+
+      {/* Image panel */}
+      <motion.div
+        className={`relative overflow-hidden bg-black ${isEven ? 'lg:order-1' : 'lg:order-2'} h-[320px] lg:h-auto`}
+        initial={{ clipPath: isEven ? 'inset(0 100% 0 0)' : 'inset(0 0 0 100%)' }}
+        animate={isInView ? { clipPath: 'inset(0 0% 0 0%)' } : {}}
+        transition={{ duration: 1.1, ease: [0.76, 0, 0.24, 1], delay: 0.1 }}
+      >
+        <img
+          src={service.image}
+          alt={`${service.title} by Lead Events UAE`}
+          loading="lazy"
+          className="absolute inset-0 h-full w-full object-cover transition-transform duration-[1400ms] ease-out group-hover:scale-110 opacity-80"
+        />
+        {/* Gradient overlay */}
+        <div className={`absolute inset-0 bg-gradient-to-${isEven ? 'r' : 'l'} from-transparent to-[#050505]/80`} />
+        {/* Big service number watermark */}
+        <div className="absolute bottom-0 right-0 p-6 pointer-events-none select-none">
+          <span
+            className="text-[clamp(5rem,14vw,10rem)] font-black leading-none tracking-tighter"
+            style={{ WebkitTextStroke: '1px rgba(255,255,255,0.12)', color: 'transparent' }}
+          >
+            {service.number}
+          </span>
+        </div>
+        {/* Label pill */}
+        <div className="absolute top-6 left-6">
+          <span className="inline-flex items-center gap-2 bg-[#c62828]/90 backdrop-blur-sm px-4 py-1.5 text-[10px] font-black tracking-[0.25em] uppercase text-white">
+            <service.icon className="w-3 h-3" />
+            {service.label}
+          </span>
+        </div>
+      </motion.div>
+
+      {/* Content panel */}
+      <div
+        className={`relative flex flex-col justify-center px-10 py-14 lg:py-20 lg:px-16 bg-[#fbf8f3] ${isEven ? 'lg:order-2' : 'lg:order-1'}`}
+      >
+        {/* Red accent line */}
+        <motion.div
+          className="absolute top-0 left-0 h-px bg-brand-red"
+          initial={{ scaleX: 0, transformOrigin: isEven ? 'left' : 'right' }}
+          animate={isInView ? { scaleX: 1 } : {}}
+          transition={{ duration: 0.8, delay: 0.5 }}
+          style={{ width: '100%' }}
+        />
+
+        <RevealText delay={0.15}>
+          <h2
+            itemProp="name"
+            className="text-[clamp(2.4rem,5vw,4.5rem)] font-black uppercase tracking-tighter leading-[0.88] mb-6 text-brand-dark"
+          >
+            {service.title}
+          </h2>
+        </RevealText>
+
+        <FadeUp delay={0.25}>
+          <p itemProp="description" className="text-brand-dark/60 font-light leading-relaxed mb-8 text-base lg:text-lg max-w-lg">
+            {service.description}
+          </p>
+        </FadeUp>
+
+        <FadeUp delay={0.35}>
+          <div className="flex flex-wrap gap-2 mb-10">
+            {service.features.map((f) => (
+              <span
+                key={f}
+                className="border border-black/15 px-3 py-1.5 text-[10px] font-bold uppercase tracking-[0.14em] text-brand-dark/60 hover:border-brand-red hover:text-brand-red transition-all duration-300"
+              >
+                {f}
+              </span>
+            ))}
+          </div>
+        </FadeUp>
+
+        <FadeUp delay={0.45}>
+          <Link
+            to="/contact"
+            className="group/btn inline-flex items-center gap-3 self-start"
+          >
+            <span className="relative overflow-hidden bg-brand-red text-white text-xs font-black uppercase tracking-[0.22em] px-7 py-4 flex items-center gap-3 transition-all duration-300 hover:bg-[#8e0000]">
+              {service.cta}
+              <ArrowRight className="w-4 h-4 transition-transform duration-300 group-hover/btn:translate-x-1" />
+              {/* shimmer */}
+              <span className="absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-white/15 to-transparent group-hover/btn:translate-x-full transition-transform duration-700" />
+            </span>
+          </Link>
+        </FadeUp>
+      </div>
+    </motion.article>
+  );
+}
+
+/* ─── PAGE ──────────────────────────────────────────────────────── */
 export default function Services() {
   const { scrollYProgress: pageScrollYProgress } = useScroll();
   const yHeroBg = useTransform(pageScrollYProgress, [0, 1], ['0%', '50%']);
   const opacityHeroText = useTransform(pageScrollYProgress, [0, 0.2], [1, 0]);
 
-  const services = [
-    {
-      number: '01',
-      title: 'Corporate Events',
-      slug: 'corporate-events',
-      icon: Briefcase,
-      image: '/home/conferences_premium.png',
-      cta: 'Plan Your Corporate Event',
-      description:
-        'Lead Events specializes in corporate event management in Dubai, delivering conferences, seminars, annual meetings, product launches, networking events, awards ceremonies, and executive experiences. We create strategic event solutions that strengthen brands, engage audiences, and deliver measurable business outcomes through seamless planning and world-class production.',
-      features: ['Corporate Conferences', 'Annual Meetings', 'Product Launches', 'Award Ceremonies', 'Executive Summits', 'Gala Dinners'],
-    },
-    {
-      number: '02',
-      title: 'Audio Visual Rental',
-      slug: 'audio-visual-rental',
-      icon: Volume2,
-      image: '/home/stats_background_premium.png',
-      cta: 'Request AV Equipment',
-      description:
-        'Deliver exceptional event experiences with professional audio visual rental services in Dubai. We provide LED video walls, sound systems, projectors, lighting, staging, live streaming equipment, microphones, and technical support for corporate events, exhibitions, weddings, and conferences across the UAE.',
-      features: ['LED Walls', 'Professional Sound', 'Lighting Systems', 'Live Streaming', 'Projection Systems', 'Technical Crew'],
-    },
-    {
-      number: '03',
-      title: 'Exhibition & Trade Shows',
-      slug: 'exhibition-trade-shows',
-      icon: MonitorPlay,
-      image: '/assets/exhibition.png',
-      cta: 'Build Your Exhibition',
-      description:
-        'Maximize your brand presence with exhibition management and trade show solutions designed to attract visitors and generate meaningful engagement. Lead Events designs, builds, and manages premium exhibition stands, trade show booths, product showcases, and experiential brand spaces across Dubai and the UAE.',
-      features: ['Exhibition Booth Design', 'Stand Construction', 'Visitor Engagement', 'Product Displays', 'Logistics', 'On-site Management'],
-    },
-    {
-      number: '04',
-      title: 'Entertainment',
-      slug: 'entertainment',
-      icon: Clapperboard,
-      image: '/home/brand_activations_premium.png',
-      cta: 'Book Entertainment',
-      description:
-        'Create unforgettable experiences with premium event entertainment services including live performers, celebrity appearances, DJs, musicians, dancers, cultural shows, interactive acts, and customized performances for corporate events, weddings, exhibitions, and luxury celebrations.',
-      features: ['Live Bands', 'DJs', 'Celebrity Talent', 'Cultural Shows', 'Interactive Entertainment', 'Stage Performances'],
-    },
-    {
-      number: '05',
-      title: 'Luxury Weddings',
-      slug: 'luxury-weddings',
-      icon: Sparkles,
-      image: '/expertise/3.png',
-      cta: 'Plan Your Wedding',
-      description:
-        'Lead Events creates elegant wedding experiences through luxury wedding planning, bespoke decor, entertainment, venue styling, floral concepts, lighting design, and complete wedding management. Every celebration is thoughtfully designed to reflect your vision and create lifelong memories.',
-      features: ['Wedding Planning', 'Luxury Decor', 'Floral Design', 'Entertainment', 'Lighting', 'Guest Experience'],
-    },
-    {
-      number: '06',
-      title: 'Audio Visual Installations',
-      slug: 'audio-visual-installations',
-      icon: Headphones,
-      image: '/about/mission.png',
-      cta: 'Talk To Our Experts',
-      description:
-        'Our professional audio visual installation services provide permanent AV solutions for hotels, conference centers, auditoriums, retail environments, offices, and commercial spaces. We design and install high-performance audiovisual systems tailored to your business requirements.',
-      features: ['Meeting Rooms', 'Auditoriums', 'LED Installations', 'Digital Signage', 'Control Systems', 'Maintenance'],
-    },
-  ];
-
-  const stats = [
-    ['15+', 'Years Experience'],
-    ['300+', 'Events Produced'],
-    ['UAE', 'Wide Coverage'],
-    ['24/7', 'Event Support'],
-  ];
-
-  const reasons = [
-    '15+ Years Experience',
-    'Corporate Event Specialists',
-    'Premium AV Technology',
-    'UAE Wide Coverage',
-    'Dedicated Event Managers',
-    'End-to-End Event Production',
-  ];
-
-  const process = ['Discovery', 'Strategy', 'Creative Design', 'Production', 'Execution', 'Event Success'];
-
-  const projects = [
-    ['Corporate Summit', 'Conference Management Dubai', '/home/conferences_premium.png'],
-    ['Luxury Wedding', 'Wedding Planner Dubai', '/expertise/3.png'],
-    ['Trade Show Pavilion', 'Trade Show Booth Dubai', '/assets/exhibition.png'],
-    ['Brand Activation', 'Brand Activation Dubai', '/home/brand_activations_premium.png'],
-  ];
-
   const seoDescription =
-    'Lead Events provides professional event management services in Dubai and the UAE including corporate events, audio visual rental, exhibitions, entertainment, weddings, and AV installations.';
+    'Lead Events provides professional event management services in Dubai and the UAE including corporate events, audio visual rental, exhibitions, entertainment, weddings, brand activations, staging, fabrication, LED screen rental, and AV installations.';
   const seoKeywords =
-    'Event Management Company Dubai, Corporate Events Dubai, Event Management UAE, Event Production Dubai, Audio Visual Rental Dubai, AV Installation Dubai, Exhibition Management UAE, Trade Show Booth Dubai, Wedding Planner Dubai, Conference Management Dubai, Live Entertainment Dubai, Luxury Event Management UAE, Brand Activation Dubai, Audio Visual Services UAE';
+    'Event Management Company Dubai, Corporate Events Dubai, Event Management UAE, Event Production Dubai, Audio Visual Rental Dubai, AV Installation Dubai, Exhibition Management UAE, Trade Show Booth Dubai, Wedding Planner Dubai, Conference Management Dubai, Live Entertainment Dubai, Luxury Event Management UAE, Brand Activation Dubai, Staging and Fabrication Dubai, LED Screen Rental Dubai, Audio Visual Services UAE';
+
   const serviceStructuredData = {
     '@context': 'https://schema.org',
     '@type': 'ItemList',
@@ -132,11 +296,7 @@ export default function Services() {
         name: service.title,
         description: service.description,
         url: `https://leadevents.ae/services#${service.slug}`,
-        provider: {
-          '@type': 'Organization',
-          name: 'Lead Events',
-          url: 'https://leadevents.ae',
-        },
+        provider: { '@type': 'Organization', name: 'Lead Events', url: 'https://leadevents.ae' },
         areaServed: ['Dubai', 'Abu Dhabi', 'Sharjah', 'United Arab Emirates'],
       },
     })),
@@ -144,18 +304,12 @@ export default function Services() {
 
   return (
     <>
-      <SEO
-        title="Event Management Services UAE"
-        description={seoDescription}
-        keywords={seoKeywords}
-      />
+      <SEO title="Event Management Services UAE" description={seoDescription} keywords={seoKeywords} />
       <Helmet>
-        <script type="application/ld+json">
-          {JSON.stringify(serviceStructuredData)}
-        </script>
+        <script type="application/ld+json">{JSON.stringify(serviceStructuredData)}</script>
       </Helmet>
 
-      {/* Cinematic Hero Section */}
+      {/* ══════════ HERO (UNTOUCHED) ══════════ */}
       <section
         className="relative h-screen w-full flex items-center justify-center overflow-hidden"
         itemScope
@@ -166,7 +320,7 @@ export default function Services() {
 
         <motion.div
           style={{ y: yHeroBg }}
-          className="absolute inset-0 w-full h-[120%] bg-[url('/about/hero.png')] bg-cover bg-center bg-no-repeat"
+          className="absolute inset-0 w-full h-[120%] bg-[url('/services/hero.png')] bg-cover bg-center bg-no-repeat"
         />
         <div className="absolute inset-0 bg-gradient-to-b from-brand-dark/40 via-brand-dark/80 to-brand-dark z-0" />
         <div className="absolute top-1/4 -right-1/4 w-[600px] h-[600px] bg-brand-red/20 rounded-full blur-[150px] mix-blend-screen animate-blob z-0" />
@@ -213,229 +367,146 @@ export default function Services() {
             transition={{ duration: 0.8, delay: 1.2 }}
             className="flex flex-wrap justify-center gap-6"
           >
-            <Button to="/contact" variant="primary" className="text-lg px-10 py-5 rounded-none cursor-hover-target">
+            <Link to="/contact" className="relative inline-flex items-center justify-center px-10 py-5 bg-brand-red text-white font-bold text-lg tracking-wide overflow-hidden group/btn transition-all duration-300 hover:bg-[#8e0000] cursor-hover-target">
               Plan Your Event
-            </Button>
-            <Button to="/portfolio" variant="secondary" className="text-lg px-10 py-5 rounded-none cursor-hover-target border-white/30 text-white hover:border-brand-red">
+              <span className="absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-white/15 to-transparent group-hover/btn:translate-x-full transition-transform duration-700" />
+            </Link>
+            <Link to="/portfolio" className="inline-flex items-center justify-center px-10 py-5 border border-white/30 text-white font-bold text-lg tracking-wide hover:border-brand-red hover:bg-brand-red/10 transition-all duration-300 cursor-hover-target">
               View Our Portfolio
-            </Button>
+            </Link>
           </motion.div>
         </motion.div>
       </section>
 
+      {/* ══════════ MAIN CONTENT ══════════ */}
       <main className="bg-[#fbf8f3] text-brand-dark overflow-hidden">
-        <section className="relative border-t border-black/10 py-14 md:py-20">
-          <div className="absolute inset-0 bg-noise opacity-[0.025]" />
-          <div className="absolute right-0 top-0 h-full w-1/2 bg-gradient-to-l from-brand-red/5 to-transparent" />
-          <div className="container mx-auto px-6 lg:px-12 relative z-10">
-            <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-end">
-              <motion.div
-                initial={{ opacity: 0, y: 24 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                className="lg:col-span-7"
-              >
-                <span className="text-brand-red text-xs font-bold tracking-[0.35em] uppercase block mb-5">
-                  Our Expertise
-                </span>
-                <h2 className="text-5xl md:text-7xl lg:text-8xl font-black uppercase tracking-tighter leading-[0.86]">
-                  Professional Event Management Services in Dubai & UAE
-                </h2>
-              </motion.div>
-              <motion.div
-                initial={{ opacity: 0, y: 24 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: 0.1 }}
-                className="lg:col-span-5"
-              >
-                <p className="text-xl md:text-2xl text-brand-dark/70 font-light leading-relaxed mb-8">
-                  Lead Events is a trusted event management company in Dubai delivering innovative event planning, premium event production, audio visual solutions, exhibition management, luxury weddings, corporate events, and live entertainment across the UAE.
-                </p>
-                <a href="#services-grid" className="inline-flex items-center gap-3 bg-brand-red px-7 py-4 text-xs font-bold uppercase tracking-[0.2em] text-white hover:bg-brand-darkRed transition-colors cursor-hover-target">
-                  Explore Our Services <ArrowRight className="w-4 h-4" />
-                </a>
-              </motion.div>
-            </div>
-          </div>
+
+        {/* ── Intro marquee-like divider ── */}
+        <section className="border-y border-black/10 py-5 overflow-hidden bg-[#fbf8f3]">
+          <motion.div
+            animate={{ x: [0, -1200] }}
+            transition={{ duration: 20, ease: 'linear', repeat: Infinity }}
+            className="flex gap-10 whitespace-nowrap"
+          >
+            {[...Array(6)].map((_, i) => (
+              <span key={i} className="flex items-center gap-10 text-xs font-black uppercase tracking-[0.35em] text-brand-dark/25">
+                <span>Corporate Events</span>
+                <span className="text-brand-red">✦</span>
+                <span>AV Rental</span>
+                <span className="text-brand-red">✦</span>
+                <span>Exhibitions</span>
+                <span className="text-brand-red">✦</span>
+                <span>Entertainment</span>
+                <span className="text-brand-red">✦</span>
+                <span>Luxury Weddings</span>
+                <span className="text-brand-red">✦</span>
+                <span>AV Installations</span>
+                <span className="text-brand-red">✦</span>
+                <span>Brand Activation</span>
+                <span className="text-brand-red">✦</span>
+                <span>Staging &amp; Fabrication</span>
+                <span className="text-brand-red">✦</span>
+                <span>LED Screen Rental</span>
+                <span className="text-brand-red">✦</span>
+              </span>
+            ))}
+          </motion.div>
         </section>
 
-        <section id="services-grid" className="py-8 md:py-16">
-          <div className="container mx-auto px-6 lg:px-12">
-            <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-5 lg:gap-6">
-              {services.map((service, index) => (
-                <motion.article
-                  key={service.slug}
-                  id={service.slug}
-                  initial={{ opacity: 0, y: 28 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true, margin: '-80px' }}
-                  transition={{ duration: 0.6, delay: index * 0.04 }}
-                  whileHover={{ y: -8 }}
-                  className="group bg-white border border-black/10 shadow-[0_22px_70px_rgba(0,0,0,0.07)] overflow-hidden"
-                  itemScope
-                  itemType="https://schema.org/Service"
-                >
-                  <meta itemProp="serviceType" content={service.title} />
-                  <div className="relative h-[300px] overflow-hidden bg-brand-dark">
-                    <img
-                      src={service.image}
-                      alt={`${service.title} by Lead Events UAE`}
-                      loading="lazy"
-                      className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-black/20 to-transparent" />
-                    <div className="absolute left-5 top-5 flex h-14 w-14 items-center justify-center bg-brand-red text-white">
-                      <service.icon className="w-7 h-7" />
-                    </div>
-                    <div className="absolute bottom-5 left-5 right-5 flex items-end justify-between">
-                      <span className="text-6xl font-black tracking-tighter text-white leading-none">
-                        {service.number}
-                      </span>
-                      <span className="text-white/70 text-xs uppercase tracking-[0.25em]">
-                        Service
-                      </span>
-                    </div>
-                  </div>
-
-                  <div className="p-6 md:p-7">
-                    <h2 itemProp="name" className="text-3xl md:text-4xl font-black uppercase tracking-tighter leading-[0.9] mb-5">
-                      {service.title}
-                    </h2>
-                    <p itemProp="description" className="text-brand-dark/68 leading-relaxed font-light mb-6">
-                      {service.description}
-                    </p>
-                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 mb-7">
-                      {service.features.map((feature) => (
-                        <div key={feature} className="flex items-center gap-2 border border-black/10 bg-[#fbf8f3] px-3 py-2">
-                          <span className="h-1.5 w-1.5 bg-brand-red shrink-0" />
-                          <span className="text-xs font-bold uppercase tracking-[0.08em] text-brand-dark/70">
-                            {feature}
-                          </span>
-                        </div>
-                      ))}
-                    </div>
-                    <Button to="/contact" variant="outline" className="w-full px-6 py-4 text-xs uppercase tracking-[0.16em] rounded-none cursor-hover-target">
-                      {service.cta}
-                    </Button>
-                  </div>
-                </motion.article>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        <section className="py-14 md:py-20 border-t border-black/10">
-          <div className="container mx-auto px-6 lg:px-12">
-            <div className="grid grid-cols-1 lg:grid-cols-12 gap-10">
+        {/* ── Section Header ── */}
+        <section className="relative py-24 md:py-32 px-6 lg:px-12 border-b border-black/10">
+          <div className="absolute inset-0 bg-gradient-to-br from-brand-red/5 via-transparent to-transparent pointer-events-none" />
+          <div className="container mx-auto relative">
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-end">
+              <div className="lg:col-span-7">
+                <RevealText>
+                  <span className="text-brand-red text-[10px] font-black tracking-[0.4em] uppercase block mb-6">
+                    Our Expertise
+                  </span>
+                </RevealText>
+                <RevealText delay={0.1}>
+                  <h2 className="text-[clamp(3rem,8vw,7rem)] font-black uppercase tracking-tighter leading-[0.86] text-brand-dark">
+                    Professional Event Management{' '}
+                    <span style={{ WebkitTextStroke: '1px rgba(10,10,10,0.35)', color: 'transparent' }}>
+                      Services
+                    </span>{' '}
+                    in Dubai & UAE
+                  </h2>
+                </RevealText>
+              </div>
               <div className="lg:col-span-5">
-                <span className="text-brand-red text-xs font-bold tracking-[0.35em] uppercase block mb-5">
-                  Why Choose Lead Events
-                </span>
-                <h2 className="text-5xl md:text-7xl font-black uppercase tracking-tighter leading-[0.86]">
-                  Reliable. Creative. Built for UAE Events.
-                </h2>
-              </div>
-              <div className="lg:col-span-7 grid grid-cols-1 sm:grid-cols-2 gap-3">
-                {reasons.map((reason, index) => (
-                  <motion.div
-                    key={reason}
-                    initial={{ opacity: 0, y: 18 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ delay: index * 0.04 }}
-                    className="bg-white border border-black/10 p-5 flex items-center gap-4"
+                <FadeUp delay={0.2}>
+                  <p className="text-xl text-brand-dark/60 font-light leading-relaxed mb-8">
+                    Lead Events is a trusted event management company delivering innovative planning, premium production, audio visual solutions, exhibition management, luxury weddings, and live entertainment across the UAE.
+                  </p>
+                  <a
+                    href="#services-grid"
+                    className="group inline-flex items-center gap-3 text-brand-dark font-bold text-sm uppercase tracking-[0.22em]"
                   >
-                    <BadgeCheck className="w-5 h-5 text-brand-red shrink-0" />
-                    <span className="font-bold text-brand-dark/75">{reason}</span>
-                  </motion.div>
-                ))}
+                    <span className="h-px w-12 bg-brand-red transition-all duration-500 group-hover:w-20" />
+                    Explore Services
+                    <ArrowRight className="w-4 h-4 text-brand-red transition-transform duration-300 group-hover:translate-x-1" />
+                  </a>
+                </FadeUp>
               </div>
             </div>
           </div>
         </section>
 
-        <section className="py-14 md:py-20 bg-brand-dark text-white">
-          <div className="container mx-auto px-6 lg:px-12">
-            <span className="text-brand-red text-xs font-bold tracking-[0.35em] uppercase block mb-5">
-              Process Timeline
-            </span>
-            <h2 className="text-5xl md:text-7xl font-black uppercase tracking-tighter leading-[0.86] mb-12">
-              From Discovery to Event Success
-            </h2>
-            <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-6 gap-3">
-              {process.map((step, index) => (
-                <motion.div
-                  key={step}
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: index * 0.05 }}
-                  className="border border-white/10 bg-white/[0.04] p-5 min-h-[180px] flex flex-col justify-between"
-                >
-                  <span className="text-brand-red text-sm font-black tracking-[0.25em]">0{index + 1}</span>
-                  <h3 className="text-2xl font-black uppercase tracking-tighter">{step}</h3>
-                </motion.div>
-              ))}
-            </div>
-          </div>
+        {/* ── Services — Alternating Asymmetric Sections ── */}
+        <section id="services-grid" className="divide-y divide-black/10">
+          {services.map((service, index) => (
+            <ServiceCard key={service.slug} service={service} index={index} />
+          ))}
         </section>
 
-        <section className="py-14 md:py-20">
-          <div className="container mx-auto px-6 lg:px-12">
-            <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-10">
-              <div>
-                <span className="text-brand-red text-xs font-bold tracking-[0.35em] uppercase block mb-5">
-                  Featured Work
-                </span>
-                <h2 className="text-5xl md:text-7xl font-black uppercase tracking-tighter leading-[0.86]">
-                  Selected Event Worlds
-                </h2>
-              </div>
-              <Button to="/portfolio" variant="outline" className="px-7 py-4 text-xs uppercase tracking-[0.18em] rounded-none cursor-hover-target">
-                View Portfolio
-              </Button>
-            </div>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
-              {projects.map(([title, type, image]) => (
-                <motion.article
-                  key={title}
-                  whileHover={{ y: -6 }}
-                  className="relative h-[420px] overflow-hidden bg-brand-dark text-white"
-                >
-                  <img src={image} alt={`${title} by Lead Events`} loading="lazy" className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 hover:scale-105" />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black via-black/30 to-transparent" />
-                  <div className="absolute bottom-0 left-0 right-0 p-6">
-                    <span className="text-brand-red text-xs font-bold uppercase tracking-[0.25em]">{type}</span>
-                    <h3 className="mt-4 text-3xl font-black uppercase tracking-tighter leading-none">{title}</h3>
-                  </div>
-                </motion.article>
-              ))}
-            </div>
-          </div>
-        </section>
+        {/* ── CTA ── */}
+        <section className="relative overflow-hidden bg-[#030303] py-28 md:py-36 border-t border-white/[0.06]">
+          {/* Background image */}
+          <div className="absolute inset-0 bg-[url('/services/CTA.png')] bg-cover bg-center opacity-15" />
+          {/* Deep gradient */}
+          <div className="absolute inset-0 bg-gradient-to-br from-brand-red/20 via-black/90 to-black" />
+          {/* Ambient glows */}
+          <div className="absolute top-0 left-1/4 w-[600px] h-[600px] bg-brand-red/10 rounded-full blur-[100px] pointer-events-none" />
+          <div className="absolute bottom-0 right-1/4 w-[400px] h-[400px] bg-brand-red/8 rounded-full blur-[80px] pointer-events-none" />
 
-        <section className="relative overflow-hidden bg-brand-dark py-20 md:py-28 text-white">
-          <div className="absolute inset-0 bg-[url('/home/CTA.png')] bg-cover bg-center opacity-25" />
-          <div className="absolute inset-0 bg-gradient-to-r from-black via-black/85 to-black/45" />
           <div className="container mx-auto px-6 lg:px-12 relative z-10 text-center">
-            <span className="text-brand-red text-xs font-bold tracking-[0.35em] uppercase block mb-6">
-              Start Your Project
-            </span>
-            <h2 className="text-5xl md:text-7xl lg:text-8xl font-black uppercase tracking-tighter leading-[0.86] mb-8">
-              Let's Create Extraordinary Events Together
-            </h2>
-            <p className="mx-auto max-w-4xl text-lg md:text-xl text-brand-text/75 font-light leading-relaxed mb-10">
-              Partner with Lead Events for professional event management services in Dubai and the UAE. Whether you're planning a corporate conference, exhibition, wedding, or luxury brand activation, our team is ready to transform your vision into an unforgettable experience.
-            </p>
-            <div className="flex flex-wrap justify-center gap-5">
-              <Button to="/contact" variant="primary" className="px-10 py-5 rounded-none cursor-hover-target uppercase tracking-[0.18em] text-sm">
+            <FadeUp>
+              <span className="text-brand-red text-[10px] font-black tracking-[0.4em] uppercase block mb-8">
                 Start Your Project
-              </Button>
-              <Button to="/contact" variant="secondary" className="px-10 py-5 rounded-none cursor-hover-target uppercase tracking-[0.18em] text-sm border-white/20 text-white hover:border-brand-red">
-                Schedule Consultation
-              </Button>
-            </div>
+              </span>
+            </FadeUp>
+            <RevealText>
+              <h2 className="text-[clamp(3rem,9vw,8rem)] font-black uppercase tracking-tighter leading-[0.86] mb-8 text-white">
+                Let&apos;s Create<br />
+                <span style={{ WebkitTextStroke: '1.5px rgba(255,255,255,0.35)', color: 'transparent' }}>
+                  Extraordinary
+                </span>
+              </h2>
+            </RevealText>
+            <FadeUp delay={0.2}>
+              <p className="mx-auto max-w-2xl text-lg text-white/45 font-light leading-relaxed mb-12">
+                Partner with Lead Events for professional event management across Dubai and the UAE. Whether it&apos;s a corporate conference, exhibition, wedding, or luxury brand activation — we&apos;re ready to transform your vision.
+              </p>
+            </FadeUp>
+            <FadeUp delay={0.35}>
+              <div className="flex flex-wrap justify-center gap-5">
+                <Link
+                  to="/contact"
+                  className="relative group inline-flex items-center justify-center gap-3 bg-brand-red text-white font-black text-sm uppercase tracking-[0.22em] px-10 py-5 overflow-hidden hover:bg-[#8e0000] transition-colors duration-300 cursor-hover-target"
+                >
+                  Start Your Project
+                  <ArrowRight className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" />
+                  <span className="absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-white/15 to-transparent group-hover:translate-x-full transition-transform duration-700" />
+                </Link>
+                <Link
+                  to="/contact"
+                  className="inline-flex items-center justify-center gap-3 border border-white/15 text-white font-black text-sm uppercase tracking-[0.22em] px-10 py-5 hover:border-brand-red hover:bg-brand-red/10 transition-all duration-300 cursor-hover-target"
+                >
+                  Schedule a Consultation
+                </Link>
+              </div>
+            </FadeUp>
           </div>
         </section>
       </main>
