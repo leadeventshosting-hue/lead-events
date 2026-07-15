@@ -33,7 +33,11 @@ export default function Navbar() {
   return (
     <header 
       className={`fixed top-0 w-full z-50 transition-all duration-500 ${
-        isScrolled ? 'bg-[#fbf8f3]/90 backdrop-blur-xl border-b border-black/10 py-2 shadow-[0_10px_40px_rgba(0,0,0,0.06)]' : 'bg-transparent backdrop-blur-sm py-3'
+        mobileMenuOpen
+          ? 'bg-[#fbf8f3] border-b border-black/10 py-3'
+          : isScrolled
+            ? 'bg-[#fbf8f3]/90 backdrop-blur-xl border-b border-black/10 py-2 shadow-[0_10px_40px_rgba(0,0,0,0.06)]'
+            : 'bg-transparent backdrop-blur-sm py-3'
       }`}
     >
       <div className="container mx-auto px-6 lg:px-12 flex items-center justify-between">
@@ -72,7 +76,7 @@ export default function Navbar() {
         {/* Mobile Menu Button */}
         <button 
           className={`md:hidden z-50 relative cursor-hover-target transition-colors ${
-            isLightHeader ? 'text-brand-dark' : 'text-white'
+            mobileMenuOpen || isLightHeader ? 'text-brand-dark' : 'text-white'
           }`}
           onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
         >
@@ -87,9 +91,9 @@ export default function Navbar() {
               animate={{ opacity: 1, clipPath: 'inset(0 0 0% 0)' }}
               exit={{ opacity: 0, clipPath: 'inset(0 0 100% 0)' }}
               transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
-              className="fixed inset-0 w-full h-screen bg-brand-dark z-40 flex flex-col items-center justify-center gap-8"
+              className="fixed inset-0 w-full h-screen bg-[#fbf8f3] z-40 flex flex-col items-center justify-center gap-8"
             >
-              <div className="absolute inset-0 bg-noise opacity-20 pointer-events-none" />
+              <div className="absolute inset-0 bg-gradient-radial from-brand-red/10 to-transparent pointer-events-none" />
               {navLinks.map((link, idx) => (
                 <motion.div
                   key={link.name}
@@ -100,7 +104,7 @@ export default function Navbar() {
                   <Link 
                     to={link.path}
                     className={`text-5xl font-black uppercase tracking-tighter hover:text-brand-red transition-colors ${
-                      location.pathname === link.path ? 'text-brand-red text-outline' : 'text-white'
+                      location.pathname === link.path ? 'text-brand-red' : 'text-brand-dark'
                     }`}
                   >
                     {link.name}
