@@ -92,13 +92,13 @@ const contactCards = [
   {
     icon: MapPin,
     title: 'Headquarters',
-    lines: ['Street #29, Industrial Area 5', 'Sharjah, United Arab Emirates'],
+    lines: ['Street 12 - Warehouse 4', 'Umm Ramool - Dubai'],
     accent: 'from-rose-500 to-brand-red',
   },
   {
     icon: Phone,
     title: 'Call Us',
-    lines: ['+971 50 9689671', '+971 6 7487470'],
+    lines: ['+971 50 9689671', '+971 4 2841220'],
     href: 'tel:+971509689671',
     accent: 'from-brand-red to-orange-500',
   },
@@ -529,9 +529,9 @@ export default function Contact() {
                 <h3 className="text-xs font-bold tracking-[0.3em] uppercase text-brand-dark/30 mb-5">Direct Lines</h3>
                 {[
                   { icon: Phone, label: 'Call Us', value: '+971 50 9689671', href: 'tel:+971509689671' },
-                  { icon: Phone, label: 'Landline', value: '+971 6 7487470', href: 'tel:+97167487470' },
+                  { icon: Phone, label: 'Landline', value: '+971 4 2841220', href: 'tel:+97142841220' },
                   { icon: Mail, label: 'Email Us', value: 'info@leadevents.com', href: 'mailto:info@leadevents.com' },
-                  { icon: MapPin, label: 'Visit Us', value: 'Industrial Area 5, Sharjah, UAE', href: '#map' },
+                  { icon: MapPin, label: 'Visit Us', value: 'Street 12 - Warehouse 4 - Umm Ramool - Dubai', href: '#map' },
                 ].map(({ icon: Icon, label, value, href }) => (
                   <a
                     key={label}
@@ -585,8 +585,8 @@ export default function Contact() {
         >
           <div className="absolute inset-0 bg-brand-red/5 pointer-events-none z-10 rounded-3xl" />
           <iframe
-            title="Lead Events Location – Industrial Area 5 Sharjah"
-            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3136.791710886768!2d55.41393557475547!3d25.325318477628727!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3ef5f9169e9a5ceb%3A0x19a20deac4c87a50!2sLead%20Events!5e1!3m2!1sen!2sae!4v1783541770650!5m2!1sen!2sae"
+            title="Lead Events Location – Umm Ramool Dubai"
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d14439.813098380327!2d55.3601716!3d25.2216667!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3e5f5db3e8436cd9%3A0xc3b8602b9e69dfbf!2sUmm%20Ramool%20-%20Dubai!5e0!3m2!1sen!2sae!4v1716388410292!5m2!1sen!2sae"
             width="100%"
             height="100%"
             style={{ border: 0, filter: 'grayscale(60%) contrast(1.1) brightness(0.8)' }}
@@ -611,11 +611,11 @@ export default function Contact() {
                 <span className="font-black text-sm uppercase tracking-tighter">Lead Events</span>
               </div>
               <p className="text-xs text-brand-text/40 leading-relaxed">
-                Street #29, Industrial Area 5<br />
-                Sharjah, United Arab Emirates
+                Street 12 - Warehouse 4<br />
+                Umm Ramool - Dubai
               </p>
               <a
-                href="https://maps.google.com/?q=Industrial+Area+5+Sharjah+UAE"
+                href="https://maps.google.com/?q=Street+12+Warehouse+4+Umm+Ramool+Dubai"
                 target="_blank"
                 rel="noreferrer"
                 className="inline-flex items-center gap-2 mt-4 text-brand-red text-xs font-bold tracking-widest uppercase hover:gap-3 transition-all"

@@ -24,11 +24,13 @@ export default function Portfolio() {
     'Truss',
   ];
 
-  const projects = portfolioImages.map((asset, index) => ({
-    id: `${asset.category}-${index}`,
-    category: asset.category,
-    image: asset.src,
-  }));
+  const projects = portfolioImages
+    .map((asset, index) => ({
+      id: `${asset.category}-${index}`,
+      category: asset.category,
+      image: asset.src,
+    }))
+    .filter((_, index) => index !== 7 && index !== 8);
 
   const filteredProjects = filter === 'All' ? projects : projects.filter((project) => project.category === filter);
 

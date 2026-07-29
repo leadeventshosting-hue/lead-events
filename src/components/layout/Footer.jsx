@@ -65,13 +65,13 @@ export default function Footer() {
             <ul className="space-y-6">
               <li className="flex items-start gap-4 text-brand-dark/60">
                 <MapPin size={18} className="text-brand-red shrink-0 mt-1" />
-                <span className="text-sm tracking-wide leading-relaxed">Street #29, Industrial Area 5<br/>Sharjah, United Arab Emirates</span>
+                <span className="text-sm tracking-wide leading-relaxed">Street 12 - Warehouse 4<br/>Umm Ramool - Dubai</span>
               </li>
               <li className="flex items-center gap-4 text-brand-dark/60">
                 <Phone size={18} className="text-brand-red shrink-0" />
                 <div className="flex flex-col gap-1">
                   <a href="tel:+971509689671" className="text-sm tracking-wide hover:text-brand-red transition-colors cursor-hover-target">+971 50 9689671</a>
-                  <a href="tel:+97167487470" className="text-sm tracking-wide hover:text-brand-red transition-colors cursor-hover-target">+971 6 7487470</a>
+                  <a href="tel:+97142841220" className="text-sm tracking-wide hover:text-brand-red transition-colors cursor-hover-target">+971 4 2841220</a>
                 </div>
               </li>
               <li className="flex items-center gap-4 text-brand-dark/60">
