@@ -25,20 +25,26 @@ export default function Footer() {
           
           {/* Brand Logo */}
           <div className="md:col-span-5 space-y-2">
-            <Link to="/" className="inline-block cursor-hover-target group -mt-10 -mb-4">
+            <Link to="/" className="inline-block cursor-hover-target group -mt-2 -mb-2">
               <img
                 src="/logo.png"
                 alt="Lead Events Logo"
-                className="h-28 md:h-36 w-auto object-contain transition-transform duration-300 group-hover:scale-105"
+                className="h-20 md:h-24 w-auto object-contain transition-transform duration-300 group-hover:scale-105"
               />
             </Link>
             <p className="text-brand-dark/65 leading-relaxed max-w-sm text-lg font-light">
               Engineering premium live experiences and world-class brand activations across the UAE.
             </p>
-            <div className="flex items-center gap-6 text-brand-dark/50 pt-2">
-              <a href="https://www.facebook.com/" target="_blank" rel="noreferrer" className="hover:text-brand-red transition-colors cursor-hover-target"><FacebookIcon /></a>
-              <a href="https://www.instagram.com/" target="_blank" rel="noreferrer" className="hover:text-brand-red transition-colors cursor-hover-target"><InstagramIcon /></a>
-              <a href="https://www.linkedin.com/" target="_blank" rel="noreferrer" className="hover:text-brand-red transition-colors cursor-hover-target"><LinkedinIcon /></a>
+            <div className="flex items-center gap-3 text-brand-dark/50 pt-3">
+              <a 
+                href="https://www.instagram.com/leadevents_dubai/?hl=en" 
+                target="_blank" 
+                rel="noreferrer" 
+                className="hover:text-brand-red transition-all duration-300 cursor-hover-target flex items-center gap-2 group/insta"
+              >
+                <InstagramIcon className="w-5 h-5 transition-transform duration-300 group-hover/insta:scale-110" />
+                <span className="text-sm font-semibold tracking-wider text-brand-dark/60 hover:text-brand-red group-hover/insta:text-brand-red transition-colors">Follow us @leadevents_dubai</span>
+              </a>
             </div>
           </div>
 

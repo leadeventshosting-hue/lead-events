@@ -1,6 +1,6 @@
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { useRef, useState } from 'react';
-import { Mail, MapPin, Phone, MessageCircle, Send, Clock, ArrowRight, CheckCircle } from 'lucide-react';
+import { Mail, MapPin, Phone, MessageCircle, Send, Clock, ArrowRight, CheckCircle, Video } from 'lucide-react';
 import SEO from '../components/SEO';
 
 /* ── Page-level SEO constants ── */
@@ -21,7 +21,7 @@ const contactPageSchema = {
   mainEntity: {
     '@type': 'LocalBusiness',
     name: 'Lead Events',
-    telephone: '+971501234567',
+    telephone: '+971509689671',
     email: 'info@leadevents.ae',
     address: {
       '@type': 'PostalAddress',
@@ -34,7 +34,7 @@ const contactPageSchema = {
     contactPoint: [
       {
         '@type': 'ContactPoint',
-        telephone: '+971501234567',
+        telephone: '+971509689671',
         contactType: 'customer service',
         areaServed: 'AE',
         availableLanguage: ['English', 'Arabic'],
@@ -108,6 +108,13 @@ const contactCards = [
     lines: ['info@leadevents.com'],
     href: 'mailto:info@leadevents.com',
     accent: 'from-orange-500 to-amber-400',
+  },
+  {
+    icon: Video,
+    title: 'Google Meet',
+    lines: ['Virtual Consultation Session', 'Request a Video Call'],
+    href: 'https://meet.google.com/',
+    accent: 'from-blue-500 to-emerald-500',
   },
 ];
 
@@ -265,18 +272,6 @@ export default function Contact() {
           <header className="max-w-5xl">
 
             {/* Eyebrow label */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6 }}
-              className="inline-flex items-center gap-3 mb-8"
-            >
-              <span className="w-8 h-[2px] bg-brand-red" aria-hidden="true" />
-              <span className="text-brand-red text-xs font-bold tracking-[0.3em] uppercase">
-                Dubai&apos;s Premier Event Management Company
-              </span>
-            </motion.div>
-
             {/* H1 — primary keyword target */}
             <motion.h1
               initial={{ opacity: 0, y: 40 }}
@@ -289,7 +284,7 @@ export default function Contact() {
               <br />
               <span className="text-outline">Lead Events</span>
               <br />
-              <span className="text-gradient-red">Dubai, UAE.</span>
+              <span className="text-gradient-red">Dubai, UAE</span>
             </motion.h1>
 
             {/* Keyword-rich description — visible to users & crawlers */}
@@ -370,7 +365,7 @@ export default function Contact() {
       {/* ── CONTACT CARDS ── */}
       <section className="py-24 bg-[#fbf8f3] relative overflow-hidden">
         <div className="container mx-auto px-6 lg:px-12">
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-5">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
             {contactCards.map((card, i) => {
               const Icon = card.icon;
               return (

@@ -4,6 +4,7 @@ import Navbar from './components/layout/Navbar';
 import Footer from './components/layout/Footer';
 import CustomCursor from './components/ui/CustomCursor';
 import ScrollToTop from './components/ScrollToTop';
+import FloatingContact from './components/ui/FloatingContact';
 import Home from './pages/Home';
 import About from './pages/About';
 import Services from './pages/Services';
@@ -33,6 +34,7 @@ function App() {
             </Routes>
           </main>
           <Footer />
+          <FloatingContact />
         </div>
       </Router>
     </HelmetProvider>

@@ -1,7 +1,7 @@
 import { useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { motion, useScroll, useTransform, AnimatePresence } from 'framer-motion';
-import { ArrowRight, Star, Calendar, Users, Briefcase, Award, ChevronLeft, ChevronRight } from 'lucide-react';
+import { ArrowRight, Star, Calendar, Users, Briefcase, Award, ChevronLeft, ChevronRight, Volume2, ScreenShare, Sparkles, Hammer, Headphones, MonitorPlay } from 'lucide-react';
 import { Helmet } from 'react-helmet-async';
 import Button from '../components/ui/Button';
 import SEO from '../components/SEO';
@@ -80,23 +80,95 @@ export default function Home() {
       slug: "corporate-events",
       desc: "Premier corporate event management in Dubai — from elite award galas and stakeholder dinners to large-scale corporate gatherings that leave a lasting impression across the UAE.",
       icon: Briefcase,
-      image: "/expertise/1.png"
+      image: "https://res.cloudinary.com/anbsskt4/image/upload/1_zpbx8n.jpg"
     },
     {
-      title: "Brand Activations",
-      seoTitle: "Brand Activation Agency UAE",
-      slug: "brand-activations",
-      desc: "Award-winning brand activation agency in the UAE crafting immersive, multi-sensory experiences that connect brands with their audiences and drive measurable business impact.",
-      icon: Star,
-      image: "/expertise/2.png"
+      title: "Audio Visual Rental",
+      seoTitle: "Audio Visual Rental Dubai & UAE",
+      slug: "audio-visual-rental",
+      desc: "Professional AV rental services across the UAE — LED video walls, sound systems, live streaming rigs, projectors, lighting, staging, and expert technical crew for every scale of event.",
+      icon: Volume2,
+      image: "https://res.cloudinary.com/anbsskt4/image/upload/2_onsahj.jpg"
+    },
+    {
+      title: "Sound System Rental",
+      seoTitle: "Sound System Rental Dubai & UAE",
+      slug: "sound-system-rental",
+      desc: "Crystal-clear audio solutions with premium microphone, speaker, and mixer rentals tailored to your venue's acoustics.",
+      icon: Volume2,
+      image: "https://res.cloudinary.com/anbsskt4/image/upload/100_ixjabt.jpg"
+    },
+    {
+      title: "LED Screen Rental",
+      seoTitle: "LED Screen Rental Dubai & UAE",
+      slug: "led-screen-rental",
+      desc: "High-resolution indoor and outdoor LED video walls creating stunning visual experiences and backdrop displays.",
+      icon: ScreenShare,
+      image: "https://res.cloudinary.com/anbsskt4/image/upload/101_ulunsv.jpg"
+    },
+    {
+      title: "Lighting System Rental",
+      seoTitle: "Lighting System Rental Dubai & UAE",
+      slug: "lighting-system-rental",
+      desc: "Dynamic event lighting solutions from ambient uplighting to stage spotlights, creating the perfect atmosphere.",
+      icon: Sparkles,
+      image: "https://res.cloudinary.com/anbsskt4/image/upload/102_flvldq.jpg"
+    },
+    {
+      title: "Truss Rental",
+      seoTitle: "Truss Rental Dubai & UAE",
+      slug: "truss-rental",
+      desc: "Safe, heavy-duty staging trusses and rigging support solutions to secure all lighting, sound, and screen equipment.",
+      icon: Hammer,
+      image: "https://res.cloudinary.com/anbsskt4/image/upload/103_ypgsdc.jpg"
+    },
+    {
+      title: "Event Fabrication and Production",
+      seoTitle: "Event Fabrication and Production Dubai & UAE",
+      slug: "event-fabrication-production",
+      desc: "Custom set designs, staging setups, and bespoke fabrication services turning creative concepts into physical reality.",
+      icon: Hammer,
+      image: "https://res.cloudinary.com/anbsskt4/image/upload/104_ejgxgc.jpg"
     },
     {
       title: "Weddings",
-      seoTitle: "Luxury Wedding Planning Dubai",
+      seoTitle: "Luxury Wedding Planning Dubai & UAE",
       slug: "weddings",
       desc: "Bespoke luxury wedding planning in Dubai — from intimate desert ceremonies to grand ballroom celebrations, we craft unforgettable wedding experiences across the UAE.",
-      icon: Star,
-      image: "/expertise/3.png"
+      icon: Sparkles,
+      image: "https://res.cloudinary.com/anbsskt4/image/upload/3_c9saqd.jpg"
+    },
+    {
+      title: "Entertainment",
+      seoTitle: "Entertainment Services Dubai & UAE",
+      slug: "entertainment",
+      desc: "Premium live entertainment, artist booking, and customized performance coordination to keep your guests engaged.",
+      icon: Sparkles,
+      image: "https://res.cloudinary.com/anbsskt4/image/upload/105_qkvspw.jpg"
+    },
+    {
+      title: "Exhibitions",
+      seoTitle: "Exhibition Stand Builder Dubai & UAE",
+      slug: "exhibitions",
+      desc: "Seamless exhibition management and custom stand designs that capture attention and maximize brand presence.",
+      icon: MonitorPlay,
+      image: "https://res.cloudinary.com/anbsskt4/image/upload/106_w1vnnj.jpg"
+    },
+    {
+      title: "Trade Show Displays",
+      seoTitle: "Trade Show Booth Designer Dubai & UAE",
+      slug: "trade-show-displays",
+      desc: "Professional trade show booths and display materials designed to attract visitors and showcase products.",
+      icon: MonitorPlay,
+      image: "https://res.cloudinary.com/anbsskt4/image/upload/107_ly8g3b.jpg"
+    },
+    {
+      title: "AV Installation and Integration",
+      seoTitle: "AV Installation and Integration Dubai & UAE",
+      slug: "av-installation-integration",
+      desc: "Permanent audiovisual system design, setup, and integration for venues, retail spaces, and offices.",
+      icon: Headphones,
+      image: "/services/6.png"
     }
   ];
 
@@ -353,7 +425,7 @@ export default function Home() {
     <>
       <SEO 
         title="Home"
-        description="Lead Events is a premium event management company in the UAE powering events that lead the experience." 
+        description="Lead Events is a premium event management company in the UAE powering events that impact the experience." 
       />
 
       <Helmet>
@@ -384,21 +456,9 @@ export default function Home() {
           style={{ opacity: opacityHeroText }}
           className="container mx-auto px-6 lg:px-12 relative z-10 flex flex-col items-center text-center mt-20"
         >
-          <motion.div 
-            initial={{ opacity: 0, scale: 0.9 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 1, delay: 0.2 }}
-            className="mb-8"
-          >
-            <span className="px-6 py-2 rounded-full border border-white/10 bg-white/5 backdrop-blur-md text-xs sm:text-sm font-bold tracking-[0.2em] uppercase text-white shadow-[0_0_20px_rgba(255,255,255,0.05)]">
-              LEAD EVENTS UAE
-            </span>
-          </motion.div>
-          
           <div aria-hidden="true" className="text-[10vw] sm:text-[8vw] md:text-[6.5vw] font-black leading-[0.85] tracking-tighter uppercase mb-6 w-full max-w-[1400px] flex flex-wrap justify-center items-center gap-x-4">
             <StaggeredText text="Events That" />
-            <span className="text-outline">Lead</span>
-            <span className="text-brand-red">.</span>
+            <span className="text-outline">Impact</span>
           </div>
           
           <motion.p 
@@ -459,96 +519,60 @@ export default function Home() {
             </Link>
           </div>
           
-          {/* Expanding Cards Layout */}
-          <div className="flex flex-col lg:flex-row gap-4 h-[800px] lg:h-[500px] w-full mt-8">
-            {expertiseData.map((item, index) => {
-              const isActive = hoveredExpertise === index;
-              return (
-                <motion.article
-                  key={index}
-                  itemScope
-                  itemType="https://schema.org/Service"
-                  itemProp="itemListElement"
-                  initial={{ opacity: 0, y: 30 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.6, delay: index * 0.1 }}
-                  onMouseEnter={() => setHoveredExpertise(index)}
-                  onClick={() => setHoveredExpertise(index)}
-                  aria-label={item.seoTitle}
-                  className={`relative overflow-hidden rounded-2xl cursor-hover-target transition-all duration-700 ease-[0.16,1,0.3,1] border border-black/10 flex flex-col justify-end group bg-white ${
-                    isActive ? 'flex-[3]' : 'flex-[1]'
-                  }`}
-                >
-                  {/* Hidden SEO microdata */}
-                  <meta itemProp="name" content={item.seoTitle} />
-                  <meta itemProp="description" content={item.desc} />
-                  <meta itemProp="areaServed" content="Dubai, UAE" />
-                  <meta itemProp="provider" content="Lead Events UAE" />
-                  <link itemProp="url" href={`/services/${item.slug}`} />
+          {/* Services Grid Layout */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-8 w-full">
+            {expertiseData.map((item, index) => (
+              <motion.article
+                key={index}
+                itemScope
+                itemType="https://schema.org/Service"
+                itemProp="itemListElement"
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6, delay: (index % 3) * 0.1 }}
+                aria-label={item.seoTitle}
+                className="relative overflow-hidden rounded-2xl cursor-hover-target transition-all duration-500 ease-[0.16,1,0.3,1] border border-black/10 flex flex-col justify-end min-h-[350px] group bg-white"
+              >
+                {/* Hidden SEO microdata */}
+                <meta itemProp="name" content={item.seoTitle} />
+                <meta itemProp="description" content={item.desc} />
+                <meta itemProp="areaServed" content="Dubai, UAE" />
+                <meta itemProp="provider" content="Lead Events UAE" />
+                <link itemProp="url" href={`/services#${item.slug}`} />
 
-                  <div className="absolute inset-0">
-                    <img
-                      src={item.image}
-                      alt={`${item.seoTitle} — Lead Events UAE`}
-                      loading="lazy"
-                      className={`w-full h-full object-cover transition-all duration-1000 ease-out ${
-                        isActive ? 'scale-105 opacity-100' : 'scale-100 opacity-100'
-                      }`}
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-transparent" />
+                <div className="absolute inset-0">
+                  <img
+                    src={item.image}
+                    alt={`${item.seoTitle} — Lead Events UAE`}
+                    loading="lazy"
+                    className="w-full h-full object-cover transition-transform duration-[1000ms] ease-out group-hover:scale-105"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent" />
+                </div>
+                
+                <div className="relative z-10 p-6 transition-transform duration-500">
+                  <div className="flex items-center justify-between mb-4">
+                    <div className="p-3 rounded-full backdrop-blur-md border bg-white/5 border-white/10 text-white group-hover:bg-brand-red/20 group-hover:border-brand-red/50 group-hover:text-brand-red transition-colors duration-500">
+                      <item.icon className="w-6 h-6" aria-hidden="true" />
+                    </div>
                   </div>
                   
-                  <div className={`relative z-10 p-6 lg:p-10 transition-all duration-700 ${isActive ? 'translate-y-0 opacity-100' : 'translate-y-4 opacity-70'}`}>
-                    <div className="flex items-center justify-between mb-6">
-                      <div className={`p-4 rounded-full backdrop-blur-md border transition-colors duration-500 ${
-                        isActive ? 'bg-brand-red/20 border-brand-red/50 text-brand-red shadow-[0_0_20px_rgba(198,40,40,0.4)]' : 'bg-white/5 border-white/10 text-white'
-                      }`}>
-                        <item.icon className="w-8 h-8" aria-hidden="true" />
-                      </div>
-                      {isActive && (
-                        <motion.div
-                          initial={{ opacity: 0, scale: 0.8 }}
-                          animate={{ opacity: 1, scale: 1 }}
-                          transition={{ delay: 0.2 }}
-                          className="hidden md:flex w-12 h-12 rounded-full border border-white/20 items-center justify-center backdrop-blur-md bg-white/10"
-                        >
-                          <ArrowRight className="w-5 h-5 text-white" aria-hidden="true" />
-                        </motion.div>
-                      )}
-                    </div>
-                    
-                    <h3
-                      itemProp="name"
-                      className={`font-bold text-white uppercase tracking-tight transition-all duration-700 origin-left ${
-                        isActive ? 'text-3xl lg:text-4xl mb-4' : 'text-xl lg:text-2xl mb-0 whitespace-nowrap lg:-rotate-90 lg:absolute lg:bottom-10 lg:left-10 lg:translate-y-0 lg:origin-bottom-left'
-                      }`}
-                    >
-                      {item.title}
-                    </h3>
-                    
-                    <div className={`overflow-hidden transition-all duration-700 ease-[0.16,1,0.3,1] ${
-                      isActive ? 'max-h-40 opacity-100' : 'max-h-0 opacity-0'
-                    }`}>
-                      <p itemProp="description" className="text-brand-text/80 text-lg lg:text-xl font-light leading-relaxed">
-                        {item.desc}
-                      </p>
-                    </div>
-                  </div>
-                </motion.article>
-              );
-            })}
+                  <h3
+                    itemProp="name"
+                    className="font-bold text-white uppercase tracking-tight text-xl sm:text-2xl mb-2"
+                  >
+                    {item.title}
+                  </h3>
+                  
+                  <p className="text-brand-text/80 text-sm font-light leading-relaxed opacity-0 group-hover:opacity-100 transition-all duration-500 max-h-0 group-hover:max-h-[120px] overflow-hidden">
+                    {item.desc}
+                  </p>
+                </div>
+              </motion.article>
+            ))}
           </div>
-          
-          <div className="mt-8 text-center md:hidden">
-            <Link
-              to="/services"
-              aria-label="View all event management services offered by Lead Events UAE"
-              className="inline-flex items-center text-base font-bold text-brand-dark hover:text-brand-red transition-colors cursor-hover-target"
-            >
-              View all services <ArrowRight className="ml-2 w-4 h-4" />
-            </Link>
-          </div>
+
         </div>
       </section>
 
@@ -802,7 +826,7 @@ export default function Home() {
             {/* H2 SEO Heading */}
             <h2 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black tracking-tighter leading-[1.05] uppercase text-white mb-8 max-w-3xl">
               Ready to Elevate Your <br />
-              <span className="text-outline">Corporate Events</span> <br className="hidden sm:inline" />
+              <span className="text-outline">Upcoming Events</span> <br className="hidden sm:inline" />
               in Dubai & UAE?
             </h2>
 

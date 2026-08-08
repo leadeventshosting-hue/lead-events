@@ -55,24 +55,13 @@ export default function Portfolio() {
           style={{ opacity: opacityHeroText }}
           className="container mx-auto px-6 lg:px-12 relative z-10 flex flex-col items-center text-center mt-20"
         >
-          <motion.div
-            initial={{ opacity: 0, scale: 0.9 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 1, delay: 0.2 }}
-            className="mb-8"
-          >
-            <span className="px-6 py-2 rounded-full border border-white/10 bg-white/5 backdrop-blur-md text-xs sm:text-sm font-bold tracking-[0.2em] uppercase text-white shadow-[0_0_20px_rgba(255,255,255,0.05)]">
-              The Showcase
-            </span>
-          </motion.div>
-
           <motion.h1
             initial={{ opacity: 0, y: 24 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.5 }}
             className="text-[10vw] sm:text-[8vw] md:text-[6.5vw] font-black leading-[0.85] tracking-tighter uppercase mb-6 w-full max-w-[1400px]"
           >
-            Our Work. <span className="text-outline">Your Inspiration.</span>
+            Our Work <span className="text-outline">Your Inspiration</span>
           </motion.h1>
 
           <motion.p

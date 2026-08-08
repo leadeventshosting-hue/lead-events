@@ -57,7 +57,7 @@ const services = [
     slug: 'corporate-events',
     icon: Briefcase,
     image: '/services/1.png',
-    cta: 'Plan Your Event',
+    cta: 'Explore More',
     label: 'Strategy & Production',
     description:
       'We deliver conferences, seminars, product launches, award ceremonies, and executive summits. Strategic event solutions that strengthen brands and deliver measurable outcomes through seamless planning and world-class production.',
@@ -69,7 +69,7 @@ const services = [
     slug: 'audio-visual-rental',
     icon: Volume2,
     image: '/services/2.png',
-    cta: 'Request Equipment',
+    cta: 'Explore More',
     label: 'Technical Excellence',
     description:
       'Professional AV rental services across the UAE — LED video walls, sound systems, live streaming rigs, projectors, lighting, staging, and expert technical crew for every scale of event.',
@@ -81,7 +81,7 @@ const services = [
     slug: 'exhibition-trade-shows',
     icon: MonitorPlay,
     image: '/services/3.png',
-    cta: 'Build Your Stand',
+    cta: 'Explore More',
     label: 'Brand Presence',
     description:
       'We design, build, and manage premium exhibition stands, trade show booths, product showcases, and experiential brand spaces that attract visitors and generate meaningful engagement.',
@@ -93,7 +93,7 @@ const services = [
     slug: 'entertainment',
     icon: Clapperboard,
     image: '/services/4.png',
-    cta: 'Book Entertainment',
+    cta: 'Explore More',
     label: 'Live Experiences',
     description:
       'Premium entertainment services including live performers, celebrity appearances, DJs, musicians, cultural shows, and customized stage productions for corporate events, weddings, and luxury celebrations.',
@@ -105,7 +105,7 @@ const services = [
     slug: 'luxury-weddings',
     icon: Sparkles,
     image: '/services/5.png',
-    cta: 'Plan Your Wedding',
+    cta: 'Explore More',
     label: 'Timeless Elegance',
     description:
       'Elegant wedding experiences through luxury planning, bespoke decor, entertainment, venue styling, floral concepts, lighting design, and complete wedding management. Every detail crafted to reflect your vision.',
@@ -117,7 +117,7 @@ const services = [
     slug: 'audio-visual-installations',
     icon: Headphones,
     image: '/services/6.png',
-    cta: 'Talk To Our Experts',
+    cta: 'Explore More',
     label: 'Permanent Solutions',
     description:
       'Permanent AV solutions for hotels, conference centers, auditoriums, retail environments, and offices. We design and install high-performance audiovisual systems tailored to your business requirements.',
@@ -129,7 +129,7 @@ const services = [
     slug: 'brand-activation',
     icon: Megaphone,
     image: '/services/7.png',
-    cta: 'Activate Your Brand',
+    cta: 'Explore More',
     label: 'Audience Engagement',
     description:
       'We create immersive brand activations, product experiences, pop-ups, and promotional campaigns that connect brands with audiences through memorable, measurable live experiences across the UAE.',
@@ -141,7 +141,7 @@ const services = [
     slug: 'staging-fabrication',
     icon: Hammer,
     image: '/services/8.png',
-    cta: 'Build Your Stage',
+    cta: 'Explore More',
     label: 'Custom Production',
     description:
       'From custom stages and scenic structures to branded installations and event environments, our staging and fabrication team delivers safe, precise, high-quality builds tailored to every concept and venue.',
@@ -153,7 +153,7 @@ const services = [
     slug: 'led-screen-rental',
     icon: ScreenShare,
     image: '/services/9.png',
-    cta: 'Rent An LED Screen',
+    cta: 'Explore More',
     label: 'High-Impact Visuals',
     description:
       'High-resolution indoor and outdoor LED screen rental for conferences, exhibitions, concerts, weddings, and brand activations, complete with installation, content support, and expert technical operation.',
@@ -256,7 +256,7 @@ function ServiceCard({ service, index }) {
 
         <FadeUp delay={0.45}>
           <Link
-            to="/contact"
+            to="/portfolio"
             className="group/btn inline-flex items-center gap-3 self-start"
           >
             <span className="relative overflow-hidden bg-brand-red text-white text-xs font-black uppercase tracking-[0.22em] px-7 py-4 flex items-center gap-3 transition-all duration-300 hover:bg-[#8e0000]">
@@ -330,17 +330,6 @@ export default function Services() {
           style={{ opacity: opacityHeroText }}
           className="container mx-auto px-6 lg:px-12 relative z-10 flex flex-col items-center text-center mt-20"
         >
-          <motion.div
-            initial={{ opacity: 0, scale: 0.9 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 1, delay: 0.2 }}
-            className="mb-8"
-          >
-            <span className="px-6 py-2 rounded-full border border-white/10 bg-white/5 backdrop-blur-md text-xs sm:text-sm font-bold tracking-[0.2em] uppercase text-white shadow-[0_0_20px_rgba(255,255,255,0.05)]">
-              WHAT WE DO
-            </span>
-          </motion.div>
-
           <motion.h1
             initial={{ opacity: 0, y: 24 }}
             animate={{ opacity: 1, y: 0 }}
@@ -348,7 +337,7 @@ export default function Services() {
             className="text-[10vw] sm:text-[8vw] md:text-[6.5vw] font-black leading-[0.85] tracking-tighter uppercase mb-6 w-full max-w-[1400px]"
             itemProp="headline"
           >
-            Flawless <span className="text-outline">Execution</span>.
+            Flawless <span className="text-outline">Execution</span>
           </motion.h1>
 
           <motion.p
