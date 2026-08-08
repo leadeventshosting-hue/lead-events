@@ -20,7 +20,7 @@ function App() {
         <ScrollToTop />
         <CustomCursor />
         <div className="noise-bg" />
-        <div className="flex flex-col min-h-screen relative z-10">
+        <div className="flex flex-col min-h-screen relative z-10 overflow-x-hidden">
           <Navbar />
           <main className="flex-grow">
             <Routes>

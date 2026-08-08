@@ -588,7 +588,7 @@ export default function About() {
                   {item.year}
                 </div>
                 <div className="pt-2">
-                  <h3 itemProp="name" className="text-4xl font-black mb-4 tracking-tighter uppercase text-brand-dark">{item.title}</h3>
+                  <h3 itemProp="name" className="text-2xl sm:text-3xl md:text-4xl font-black mb-4 tracking-tighter uppercase text-brand-dark">{item.title}</h3>
                   <p itemProp="text" className="text-brand-dark/75 text-xl font-light leading-relaxed max-w-lg">{item.desc}</p>
                 </div>
               </motion.div>

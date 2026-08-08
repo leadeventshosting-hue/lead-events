@@ -1,4 +1,4 @@
-import { useRef, useState } from 'react';
+import { useRef, useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { motion, useScroll, useTransform, AnimatePresence } from 'framer-motion';
 import { ArrowRight, Star, Calendar, Users, Briefcase, Award, ChevronLeft, ChevronRight, Volume2, ScreenShare, Sparkles, Hammer, Headphones, MonitorPlay } from 'lucide-react';
@@ -44,6 +44,14 @@ export default function Home() {
   const [hoveredExpertise, setHoveredExpertise] = useState(0);
   const [activeTestimonial, setActiveTestimonial] = useState(0);
   const [slideDirection, setSlideDirection] = useState(0);
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const checkMobile = () => setIsMobile(window.innerWidth < 768);
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
 
   const handlePrevTestimonial = () => {
     setSlideDirection(-1);
@@ -527,10 +535,10 @@ export default function Home() {
                 itemScope
                 itemType="https://schema.org/Service"
                 itemProp="itemListElement"
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.6, delay: (index % 3) * 0.1 }}
+                initial={isMobile ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
+                whileInView={isMobile ? { opacity: 1, y: 0 } : { opacity: 1, y: 0 }}
+                viewport={isMobile ? undefined : { once: true }}
+                transition={isMobile ? { duration: 0 } : { duration: 0.6, delay: (index % 3) * 0.1 }}
                 aria-label={item.seoTitle}
                 className="relative overflow-hidden rounded-2xl cursor-hover-target transition-all duration-500 ease-[0.16,1,0.3,1] border border-black/10 flex flex-col justify-end min-h-[350px] group bg-white"
               >

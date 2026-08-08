@@ -98,6 +98,8 @@
 /* Custom Locomotive-style smooth scrolling class for wrapper */
 html {
   scroll-behavior: smooth;
+  overflow-x: hidden;
+  max-width: 100%;
 }
 
 @keyframes marquee {
