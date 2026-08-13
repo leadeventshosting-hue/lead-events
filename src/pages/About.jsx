@@ -29,21 +29,21 @@ export default function About() {
 
   const storyChapters = [
     {
-      year: '2018',
+      year: '2008',
       title: 'The Genesis',
       subtitle: 'A New Standard',
       text: 'Lead Events emerged from a singular vision: to break the mold of conventional events in the UAE. We set out to turn space, light, and sound into unforgettable brand stories.',
       stat: '50+ Mega Events'
     },
     {
-      year: '2021',
+      year: '2011',
       title: 'The Evolution',
       subtitle: 'Architects of Space',
       text: 'As the landscape transformed, so did we. We integrated state-of-the-art interactive tech, 3D design mapping, and ultra-premium architectural structures, solidifying our footprint among luxury brands.',
       stat: '250+ Projects'
     },
     {
-      year: '2026',
+      year: '2016',
       title: 'The Present & Beyond',
       subtitle: 'Limitless Innovation',
       text: 'Today, we stand as creative engineers. From high-profile government summits to immersive brand activations, we continue to push the boundaries of what is possible, creating legacy experiences.',

@@ -55,110 +55,134 @@ const services = [
     number: '01',
     title: 'Corporate Events',
     slug: 'corporate-events',
+    portfolioCategory: 'Events',
     icon: Briefcase,
-    image: '/services/1.png',
+    image: 'https://res.cloudinary.com/anbsskt4/image/upload/Corportae_Events_kfue89.jpg',
     cta: 'Explore More',
     label: 'Strategy & Production',
-    description:
-      'We deliver conferences, seminars, product launches, award ceremonies, and executive summits. Strategic event solutions that strengthen brands and deliver measurable outcomes through seamless planning and world-class production.',
+    description: 'We deliver conferences, seminars, product launches, award ceremonies, and executive summits. Strategic event solutions that strengthen brands and deliver measurable outcomes through seamless planning and world-class production.',
     features: ['Corporate Conferences', 'Annual Meetings', 'Product Launches', 'Award Ceremonies', 'Executive Summits', 'Gala Dinners'],
   },
   {
     number: '02',
     title: 'Audio Visual Rental',
     slug: 'audio-visual-rental',
+    portfolioCategory: 'Screen',
     icon: Volume2,
-    image: '/services/2.png',
+    image: 'https://res.cloudinary.com/anbsskt4/image/upload/ChatGPT_Image_Aug_13_2026_09_26_42_PM_iuoh9l.jpg',
     cta: 'Explore More',
     label: 'Technical Excellence',
-    description:
-      'Professional AV rental services across the UAE — LED video walls, sound systems, live streaming rigs, projectors, lighting, staging, and expert technical crew for every scale of event.',
+    description: 'Professional AV rental services across the UAE — LED video walls, sound systems, live streaming rigs, projectors, lighting, staging, and expert technical crew for every scale of event.',
     features: ['LED Walls', 'Professional Sound', 'Lighting Systems', 'Live Streaming', 'Projection Systems', 'Technical Crew'],
   },
   {
     number: '03',
-    title: 'Exhibition & Trade Shows',
-    slug: 'exhibition-trade-shows',
-    icon: MonitorPlay,
-    image: '/services/3.png',
+    title: 'LED Screen Rental',
+    slug: 'led-screen-rental',
+    portfolioCategory: 'Screen',
+    icon: ScreenShare,
+    image: 'https://res.cloudinary.com/anbsskt4/image/upload/Screen_Rental_z0nofi.jpg',
     cta: 'Explore More',
-    label: 'Brand Presence',
-    description:
-      'We design, build, and manage premium exhibition stands, trade show booths, product showcases, and experiential brand spaces that attract visitors and generate meaningful engagement.',
-    features: ['Booth Design', 'Stand Construction', 'Visitor Engagement', 'Product Displays', 'Logistics', 'On-site Management'],
+    label: 'High-Impact Visuals',
+    description: 'High-resolution indoor and outdoor LED screen rental for conferences, exhibitions, concerts, weddings, and brand activations, complete with installation, content support, and expert technical operation.',
+    features: ['Indoor LED Screens', 'Outdoor LED Screens', 'Video Walls', 'Custom Screen Sizes', 'Content Support', 'Technical Crew'],
   },
   {
     number: '04',
-    title: 'Entertainment',
-    slug: 'entertainment',
-    icon: Clapperboard,
-    image: '/services/4.png',
+    title: 'Lighting System Rental',
+    slug: 'lighting-system-rental',
+    portfolioCategory: 'Ambience Lights',
+    icon: Sparkles,
+    image: 'https://res.cloudinary.com/anbsskt4/image/upload/Lighting_System_Rental_r5x4ey.jpg',
     cta: 'Explore More',
-    label: 'Live Experiences',
-    description:
-      'Premium entertainment services including live performers, celebrity appearances, DJs, musicians, cultural shows, and customized stage productions for corporate events, weddings, and luxury celebrations.',
-    features: ['Live Bands', 'DJs', 'Celebrity Talent', 'Cultural Shows', 'Interactive Entertainment', 'Stage Performances'],
+    label: 'Atmospheric Design',
+    description: 'Dynamic event lighting solutions from ambient uplighting to stage spotlights, creating the perfect atmosphere.',
+    features: ['Intelligent Lighting', 'Stage Lights', 'Ambient Uplighting', 'Laser Light Shows', 'DMX Controllers', 'Rigging Crew'],
   },
   {
     number: '05',
-    title: 'Luxury Weddings',
-    slug: 'luxury-weddings',
-    icon: Sparkles,
-    image: '/services/5.png',
+    title: 'Truss Rental',
+    slug: 'truss-rental',
+    portfolioCategory: 'Truss',
+    icon: Hammer,
+    image: 'https://res.cloudinary.com/anbsskt4/image/upload/103_ypgsdc.jpg',
     cta: 'Explore More',
-    label: 'Timeless Elegance',
-    description:
-      'Elegant wedding experiences through luxury planning, bespoke decor, entertainment, venue styling, floral concepts, lighting design, and complete wedding management. Every detail crafted to reflect your vision.',
-    features: ['Wedding Planning', 'Luxury Decor', 'Floral Design', 'Entertainment', 'Lighting', 'Guest Experience'],
+    label: 'Structural Support',
+    description: 'Safe, heavy-duty staging trusses and rigging support solutions to secure all lighting, sound, and screen equipment.',
+    features: ['Aluminum Trusses', 'Ground Support', 'Rigging Hoists', 'Safety Chains', 'Stage Decks', 'Certified Riggers'],
   },
   {
     number: '06',
-    title: 'AV Installations',
-    slug: 'audio-visual-installations',
-    icon: Headphones,
-    image: '/services/6.png',
+    title: 'Event Fabrication and Production',
+    slug: 'event-fabrication-production',
+    portfolioCategory: 'Fabrication',
+    icon: Hammer,
+    image: 'https://res.cloudinary.com/anbsskt4/image/upload/Fabrication_aoznnp.jpg',
     cta: 'Explore More',
-    label: 'Permanent Solutions',
-    description:
-      'Permanent AV solutions for hotels, conference centers, auditoriums, retail environments, and offices. We design and install high-performance audiovisual systems tailored to your business requirements.',
-    features: ['Meeting Rooms', 'Auditoriums', 'LED Installations', 'Digital Signage', 'Control Systems', 'Maintenance'],
+    label: 'Custom Builds',
+    description: 'Custom set designs, staging setups, and bespoke fabrication services turning creative concepts into physical reality.',
+    features: ['Custom Stages', 'Scenic Fabrication', 'Branded Structures', 'Set Construction', 'Event Backdrops', 'On-site Installation'],
   },
   {
     number: '07',
-    title: 'Brand Activation',
-    slug: 'brand-activation',
-    icon: Megaphone,
-    image: '/services/7.png',
+    title: 'Weddings',
+    slug: 'weddings',
+    portfolioCategory: 'Events',
+    icon: Sparkles,
+    image: 'https://res.cloudinary.com/anbsskt4/image/upload/ChatGPT_Image_Aug_13_2026_09_33_43_PM_fmr2i9.jpg',
     cta: 'Explore More',
-    label: 'Audience Engagement',
-    description:
-      'We create immersive brand activations, product experiences, pop-ups, and promotional campaigns that connect brands with audiences through memorable, measurable live experiences across the UAE.',
-    features: ['Experiential Marketing', 'Product Launches', 'Pop-up Experiences', 'Roadshows', 'Promotional Campaigns', 'Audience Engagement'],
+    label: 'Luxury Celebrations',
+    description: 'Bespoke luxury wedding planning in Dubai — from intimate desert ceremonies to grand ballroom celebrations, we craft unforgettable wedding experiences across the UAE.',
+    features: ['Wedding Planning', 'Luxury Decor', 'Floral Design', 'Entertainment', 'Lighting', 'Guest Experience'],
   },
   {
     number: '08',
-    title: 'Staging & Fabrication',
-    slug: 'staging-fabrication',
-    icon: Hammer,
-    image: '/services/8.png',
+    title: 'Entertainment',
+    slug: 'entertainment',
+    portfolioCategory: 'Kids Entertainment',
+    icon: Clapperboard,
+    image: 'https://res.cloudinary.com/anbsskt4/image/upload/Entertainment_vpvbot.jpg',
     cta: 'Explore More',
-    label: 'Custom Production',
-    description:
-      'From custom stages and scenic structures to branded installations and event environments, our staging and fabrication team delivers safe, precise, high-quality builds tailored to every concept and venue.',
-    features: ['Custom Staging', 'Scenic Fabrication', 'Branded Structures', 'Set Construction', 'Event Backdrops', 'On-site Installation'],
+    label: 'Live Shows',
+    description: 'Premium entertainment services including live performers, celebrity appearances, DJs, musicians, cultural shows, and customized stage productions for corporate events, weddings, and luxury celebrations.',
+    features: ['Live Bands', 'DJs', 'Celebrity Talent', 'Cultural Shows', 'Interactive Entertainment', 'Stage Performances'],
   },
   {
     number: '09',
-    title: 'LED Screen Rental',
-    slug: 'led-screen-rental',
-    icon: ScreenShare,
-    image: '/services/9.png',
+    title: 'Exhibitions',
+    slug: 'exhibitions',
+    portfolioCategory: 'Events',
+    icon: MonitorPlay,
+    image: 'https://res.cloudinary.com/anbsskt4/image/upload/Exibution_vxb2pm.jpg',
     cta: 'Explore More',
-    label: 'High-Impact Visuals',
-    description:
-      'High-resolution indoor and outdoor LED screen rental for conferences, exhibitions, concerts, weddings, and brand activations, complete with installation, content support, and expert technical operation.',
-    features: ['Indoor LED Screens', 'Outdoor LED Screens', 'Video Walls', 'Custom Screen Sizes', 'Content Support', 'Technical Crew'],
+    label: 'Brand Spaces',
+    description: 'Seamless exhibition management and custom stand designs that capture attention and maximize brand presence.',
+    features: ['Booth Design', 'Stand Construction', 'Visitor Engagement', 'Product Displays', 'Logistics', 'On-site Management'],
   },
+  {
+    number: '10',
+    title: 'Trade Show Displays',
+    slug: 'trade-show-displays',
+    portfolioCategory: 'Events',
+    icon: MonitorPlay,
+    image: 'https://res.cloudinary.com/anbsskt4/image/upload/107_ly8g3b.jpg',
+    cta: 'Explore More',
+    label: 'Exhibition Stands',
+    description: 'Professional trade show booths and display materials designed to attract visitors and showcase products.',
+    features: ['Display Booths', 'Roll-up Banners', 'Pop-up Displays', 'Modular Stands', 'Branded Furniture', 'Graphic Printing'],
+  },
+  {
+    number: '11',
+    title: 'AV Installation and Integration',
+    slug: 'av-installation-integration',
+    portfolioCategory: 'All',
+    icon: Headphones,
+    image: 'https://res.cloudinary.com/anbsskt4/image/upload/ChatGPT_Image_Aug_13_2026_09_34_19_PM_t4w9ba.jpg',
+    cta: 'Explore More',
+    label: 'Permanent Integrations',
+    description: 'Permanent AV solutions for hotels, conference centers, auditoriums, retail environments, and offices. We design and install high-performance audiovisual systems tailored to your business requirements.',
+    features: ['Meeting Rooms', 'Auditoriums', 'LED Installations', 'Digital Signage', 'Control Systems', 'Maintenance'],
+  }
 ];
 
 /* ─── SERVICE CARD ──────────────────────────────────────────────── */
@@ -257,6 +281,7 @@ function ServiceCard({ service, index }) {
         <FadeUp delay={0.45}>
           <Link
             to="/portfolio"
+            state={{ category: service.portfolioCategory }}
             className="group/btn inline-flex items-center gap-3 self-start"
           >
             <span className="relative overflow-hidden bg-brand-red text-white text-xs font-black uppercase tracking-[0.22em] px-7 py-4 flex items-center gap-3 transition-all duration-300 hover:bg-[#8e0000]">
@@ -403,7 +428,7 @@ export default function Services() {
         </section>
 
         {/* ── Section Header ── */}
-        <section className="relative py-24 md:py-32 px-6 lg:px-12 border-b border-black/10">
+        <section className="relative py-12 md:py-16 px-6 lg:px-12 border-b border-black/10">
           <div className="absolute inset-0 bg-gradient-to-br from-brand-red/5 via-transparent to-transparent pointer-events-none" />
           <div className="container mx-auto relative">
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-end">
@@ -414,9 +439,9 @@ export default function Services() {
                   </span>
                 </RevealText>
                 <RevealText delay={0.1}>
-                  <h2 className="text-[clamp(3rem,8vw,7rem)] font-black uppercase tracking-tighter leading-[0.86] text-brand-dark">
+                  <h2 className="text-[clamp(2rem,4.5vw,4rem)] font-sans font-black uppercase tracking-tighter leading-tight text-brand-dark py-2">
                     Professional Event Management{' '}
-                    <span style={{ WebkitTextStroke: '1px rgba(10,10,10,0.35)', color: 'transparent' }}>
+                    <span className="font-sans" style={{ WebkitTextStroke: '1px rgba(10,10,10,0.35)', color: 'transparent' }}>
                       Services
                     </span>{' '}
                     in Dubai & UAE

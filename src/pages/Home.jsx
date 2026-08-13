@@ -88,47 +88,15 @@ export default function Home() {
       slug: "corporate-events",
       desc: "Premier corporate event management in Dubai — from elite award galas and stakeholder dinners to large-scale corporate gatherings that leave a lasting impression across the UAE.",
       icon: Briefcase,
-      image: "https://res.cloudinary.com/anbsskt4/image/upload/1_zpbx8n.jpg"
+      image: "https://res.cloudinary.com/anbsskt4/image/upload/Corportae_Events_kfue89.jpg"
     },
     {
-      title: "Audio Visual Rental",
-      seoTitle: "Audio Visual Rental Dubai & UAE",
-      slug: "audio-visual-rental",
-      desc: "Professional AV rental services across the UAE — LED video walls, sound systems, live streaming rigs, projectors, lighting, staging, and expert technical crew for every scale of event.",
-      icon: Volume2,
-      image: "https://res.cloudinary.com/anbsskt4/image/upload/2_onsahj.jpg"
-    },
-    {
-      title: "Sound System Rental",
-      seoTitle: "Sound System Rental Dubai & UAE",
-      slug: "sound-system-rental",
-      desc: "Crystal-clear audio solutions with premium microphone, speaker, and mixer rentals tailored to your venue's acoustics.",
-      icon: Volume2,
-      image: "https://res.cloudinary.com/anbsskt4/image/upload/100_ixjabt.jpg"
-    },
-    {
-      title: "LED Screen Rental",
-      seoTitle: "LED Screen Rental Dubai & UAE",
-      slug: "led-screen-rental",
-      desc: "High-resolution indoor and outdoor LED video walls creating stunning visual experiences and backdrop displays.",
-      icon: ScreenShare,
-      image: "https://res.cloudinary.com/anbsskt4/image/upload/101_ulunsv.jpg"
-    },
-    {
-      title: "Lighting System Rental",
-      seoTitle: "Lighting System Rental Dubai & UAE",
-      slug: "lighting-system-rental",
-      desc: "Dynamic event lighting solutions from ambient uplighting to stage spotlights, creating the perfect atmosphere.",
+      title: "Entertainment & Performances",
+      seoTitle: "Entertainment Services Dubai & UAE",
+      slug: "entertainment",
+      desc: "Premium live entertainment, artist booking, and customized performance coordination to keep your guests engaged.",
       icon: Sparkles,
-      image: "https://res.cloudinary.com/anbsskt4/image/upload/102_flvldq.jpg"
-    },
-    {
-      title: "Truss Rental",
-      seoTitle: "Truss Rental Dubai & UAE",
-      slug: "truss-rental",
-      desc: "Safe, heavy-duty staging trusses and rigging support solutions to secure all lighting, sound, and screen equipment.",
-      icon: Hammer,
-      image: "https://res.cloudinary.com/anbsskt4/image/upload/103_ypgsdc.jpg"
+      image: "https://res.cloudinary.com/anbsskt4/image/upload/Entertainment_vpvbot.jpg"
     },
     {
       title: "Event Fabrication and Production",
@@ -136,47 +104,31 @@ export default function Home() {
       slug: "event-fabrication-production",
       desc: "Custom set designs, staging setups, and bespoke fabrication services turning creative concepts into physical reality.",
       icon: Hammer,
-      image: "https://res.cloudinary.com/anbsskt4/image/upload/104_ejgxgc.jpg"
+      image: "https://res.cloudinary.com/anbsskt4/image/upload/Fabrication_aoznnp.jpg"
     },
     {
-      title: "Weddings",
-      seoTitle: "Luxury Wedding Planning Dubai & UAE",
-      slug: "weddings",
-      desc: "Bespoke luxury wedding planning in Dubai — from intimate desert ceremonies to grand ballroom celebrations, we craft unforgettable wedding experiences across the UAE.",
+      title: "LED Screen Rental",
+      seoTitle: "LED Screen Rental Dubai & UAE",
+      slug: "led-screen-rental",
+      desc: "High-resolution indoor and outdoor LED video walls creating stunning visual experiences and backdrop displays.",
+      icon: ScreenShare,
+      image: "https://res.cloudinary.com/anbsskt4/image/upload/Screen_Rental_z0nofi.jpg"
+    },
+    {
+      title: "Lighting System Rental",
+      seoTitle: "Lighting System Rental Dubai & UAE",
+      slug: "lighting-system-rental",
+      desc: "Dynamic event lighting solutions from ambient uplighting to stage spotlights, creating the perfect atmosphere.",
       icon: Sparkles,
-      image: "https://res.cloudinary.com/anbsskt4/image/upload/3_c9saqd.jpg"
+      image: "https://res.cloudinary.com/anbsskt4/image/upload/Lighting_System_Rental_r5x4ey.jpg"
     },
     {
-      title: "Entertainment",
-      seoTitle: "Entertainment Services Dubai & UAE",
-      slug: "entertainment",
-      desc: "Premium live entertainment, artist booking, and customized performance coordination to keep your guests engaged.",
-      icon: Sparkles,
-      image: "https://res.cloudinary.com/anbsskt4/image/upload/105_qkvspw.jpg"
-    },
-    {
-      title: "Exhibitions",
+      title: "Exhibition Stands",
       seoTitle: "Exhibition Stand Builder Dubai & UAE",
       slug: "exhibitions",
       desc: "Seamless exhibition management and custom stand designs that capture attention and maximize brand presence.",
       icon: MonitorPlay,
-      image: "https://res.cloudinary.com/anbsskt4/image/upload/106_w1vnnj.jpg"
-    },
-    {
-      title: "Trade Show Displays",
-      seoTitle: "Trade Show Booth Designer Dubai & UAE",
-      slug: "trade-show-displays",
-      desc: "Professional trade show booths and display materials designed to attract visitors and showcase products.",
-      icon: MonitorPlay,
-      image: "https://res.cloudinary.com/anbsskt4/image/upload/107_ly8g3b.jpg"
-    },
-    {
-      title: "AV Installation and Integration",
-      seoTitle: "AV Installation and Integration Dubai & UAE",
-      slug: "av-installation-integration",
-      desc: "Permanent audiovisual system design, setup, and integration for venues, retail spaces, and offices.",
-      icon: Headphones,
-      image: "/services/6.png"
+      image: "https://res.cloudinary.com/anbsskt4/image/upload/Exibution_vxb2pm.jpg"
     }
   ];
 

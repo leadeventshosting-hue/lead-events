@@ -1,11 +1,30 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { motion, AnimatePresence, useScroll, useTransform } from 'framer-motion';
+import { useLocation } from 'react-router-dom';
 import SEO from '../components/SEO';
 import Button from '../components/ui/Button';
 import { portfolioImages } from '../data/portfolioImages';
 
 export default function Portfolio() {
-  const [filter, setFilter] = useState('All');
+  const location = useLocation();
+  const [filter, setFilter] = useState(location.state?.category || 'All');
+
+  useEffect(() => {
+    if (location.state?.category) {
+      setFilter(location.state.category);
+      // Scroll directly to gallery, skipping the hero
+      const gallery = document.getElementById('portfolio-gallery');
+      if (gallery) {
+        gallery.scrollIntoView({ behavior: 'instant' });
+      } else {
+        // Fallback: try after a short delay for first paint
+        setTimeout(() => {
+          document.getElementById('portfolio-gallery')?.scrollIntoView({ behavior: 'instant' });
+        }, 100);
+      }
+    }
+  }, [location.state]);
+
   const { scrollYProgress } = useScroll();
   const yHeroBg = useTransform(scrollYProgress, [0, 1], ['0%', '50%']);
   const opacityHeroText = useTransform(scrollYProgress, [0, 0.2], [1, 0]);
@@ -18,7 +37,6 @@ export default function Portfolio() {
     'Podium',
     'Screen',
     'Ambience Lights',
-    'Decor Items',
     'Effects',
     'Events',
     'Truss',
