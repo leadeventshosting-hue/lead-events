@@ -91,20 +91,12 @@ export default function Home() {
       image: "https://res.cloudinary.com/anbsskt4/image/upload/Corportae_Events_kfue89.jpg"
     },
     {
-      title: "Entertainment & Performances",
-      seoTitle: "Entertainment Services Dubai & UAE",
-      slug: "entertainment",
-      desc: "Premium live entertainment, artist booking, and customized performance coordination to keep your guests engaged.",
-      icon: Sparkles,
-      image: "https://res.cloudinary.com/anbsskt4/image/upload/Entertainment_vpvbot.jpg"
-    },
-    {
-      title: "Event Fabrication and Production",
-      seoTitle: "Event Fabrication and Production Dubai & UAE",
-      slug: "event-fabrication-production",
-      desc: "Custom set designs, staging setups, and bespoke fabrication services turning creative concepts into physical reality.",
-      icon: Hammer,
-      image: "https://res.cloudinary.com/anbsskt4/image/upload/Fabrication_aoznnp.jpg"
+      title: "Audio Rentals",
+      seoTitle: "Audio Rental Dubai & UAE",
+      slug: "audio-visual-rental",
+      desc: "Professional AV rental services across the UAE — LED video walls, sound systems, live streaming rigs, projectors, lighting, staging, and expert technical crew for every scale of event.",
+      icon: Volume2,
+      image: "https://res.cloudinary.com/anbsskt4/image/upload/ChatGPT_Image_Aug_13_2026_09_26_42_PM_iuoh9l.jpg"
     },
     {
       title: "LED Screen Rental",
@@ -123,12 +115,28 @@ export default function Home() {
       image: "https://res.cloudinary.com/anbsskt4/image/upload/Lighting_System_Rental_r5x4ey.jpg"
     },
     {
-      title: "Exhibition Stands",
-      seoTitle: "Exhibition Stand Builder Dubai & UAE",
-      slug: "exhibitions",
-      desc: "Seamless exhibition management and custom stand designs that capture attention and maximize brand presence.",
-      icon: MonitorPlay,
-      image: "https://res.cloudinary.com/anbsskt4/image/upload/Exibution_vxb2pm.jpg"
+      title: "Truss Rental",
+      seoTitle: "Truss Rental Dubai & UAE",
+      slug: "truss-rental",
+      desc: "Safe, heavy-duty staging trusses and rigging support solutions to secure all lighting, sound, and screen equipment.",
+      icon: Hammer,
+      image: "https://res.cloudinary.com/anbsskt4/image/upload/103_ypgsdc.jpg"
+    },
+    {
+      title: "Event Fabrication and Production",
+      seoTitle: "Event Fabrication and Production Dubai & UAE",
+      slug: "event-fabrication-production",
+      desc: "Custom set designs, staging setups, and bespoke fabrication services turning creative concepts into physical reality.",
+      icon: Hammer,
+      image: "https://res.cloudinary.com/anbsskt4/image/upload/Fabrication_aoznnp.jpg"
+    },
+    {
+      title: "Weddings",
+      seoTitle: "Luxury Wedding Planning Dubai & UAE",
+      slug: "weddings",
+      desc: "Bespoke luxury wedding planning in Dubai — from intimate desert ceremonies to grand ballroom celebrations, we craft unforgettable wedding experiences across the UAE.",
+      icon: Sparkles,
+      image: "https://res.cloudinary.com/anbsskt4/image/upload/ChatGPT_Image_Aug_13_2026_09_33_43_PM_fmr2i9.jpg"
     }
   ];
 
@@ -479,9 +487,8 @@ export default function Home() {
             </Link>
           </div>
           
-          {/* Services Grid Layout */}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-8 w-full">
-            {expertiseData.map((item, index) => (
+            {expertiseData.slice(0, 3).map((item, index) => (
               <motion.article
                 key={index}
                 itemScope
@@ -490,11 +497,14 @@ export default function Home() {
                 initial={isMobile ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
                 whileInView={isMobile ? { opacity: 1, y: 0 } : { opacity: 1, y: 0 }}
                 viewport={isMobile ? undefined : { once: true }}
-                transition={isMobile ? { duration: 0 } : { duration: 0.6, delay: (index % 3) * 0.1 }}
+                transition={isMobile ? { duration: 0 } : { duration: 0.6, delay: index * 0.1 }}
                 aria-label={item.seoTitle}
-                className="relative overflow-hidden rounded-2xl cursor-hover-target transition-all duration-500 ease-[0.16,1,0.3,1] border border-black/10 flex flex-col justify-end min-h-[350px] group bg-white"
+                className={`relative overflow-hidden rounded-xl cursor-hover-target transition-all duration-500 ease-[0.16,1,0.3,1] border border-black/10 flex flex-col justify-end group bg-white ${
+                  index === 0
+                    ? 'min-h-[370px] md:min-h-[430px] lg:min-h-[455px]'
+                    : 'min-h-[300px] md:min-h-[360px] lg:min-h-[455px]'
+                }`}
               >
-                {/* Hidden SEO microdata */}
                 <meta itemProp="name" content={item.seoTitle} />
                 <meta itemProp="description" content={item.desc} />
                 <meta itemProp="areaServed" content="Dubai, UAE" />
@@ -508,30 +518,41 @@ export default function Home() {
                     loading="lazy"
                     className="w-full h-full object-cover transition-transform duration-[1000ms] ease-out group-hover:scale-105"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent" />
+                  <div className="absolute inset-0 bg-black/25" />
+                  <div className={`absolute inset-0 ${
+                    index === 0
+                      ? 'bg-gradient-to-t from-black/90 via-black/45 to-black/15'
+                      : 'bg-gradient-to-t from-black/95 via-black/55 to-black/20'
+                  }`} />
                 </div>
                 
-                <div className="relative z-10 p-6 transition-transform duration-500">
-                  <div className="flex items-center justify-between mb-4">
-                    <div className="p-3 rounded-full backdrop-blur-md border bg-white/5 border-white/10 text-white group-hover:bg-brand-red/20 group-hover:border-brand-red/50 group-hover:text-brand-red transition-colors duration-500">
-                      <item.icon className="w-6 h-6" aria-hidden="true" />
-                    </div>
+
+
+                <div className="relative z-10 flex flex-col justify-end p-7 w-full h-full min-h-[350px] md:min-h-[400px]">
+                  <div className="mb-4 inline-flex w-12 h-12 items-center justify-center rounded-full border border-brand-red/50 bg-brand-red/20 text-brand-red backdrop-blur-sm">
+                    <item.icon className="w-6 h-6" aria-hidden="true" />
                   </div>
-                  
                   <h3
                     itemProp="name"
-                    className="font-bold text-white uppercase tracking-tight text-xl sm:text-2xl mb-2"
+                    className="font-black text-white uppercase tracking-tight text-2xl mb-2"
                   >
                     {item.title}
                   </h3>
-                  
-                  <p className="text-brand-text/80 text-sm font-light leading-relaxed opacity-0 group-hover:opacity-100 transition-all duration-500 max-h-0 group-hover:max-h-[120px] overflow-hidden">
+                  <p className="text-white/80 text-sm font-light leading-relaxed">
                     {item.desc}
                   </p>
                 </div>
               </motion.article>
             ))}
           </div>
+
+          <Link
+            to="/services"
+            aria-label="View all event management services offered by Lead Events UAE"
+            className="mt-6 inline-flex md:hidden items-center text-base font-bold text-brand-dark hover:text-brand-red transition-colors cursor-hover-target"
+          >
+            View all services <ArrowRight className="ml-2 w-5 h-5" />
+          </Link>
 
         </div>
       </section>

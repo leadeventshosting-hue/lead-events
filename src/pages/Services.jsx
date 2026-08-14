@@ -149,19 +149,7 @@ const services = [
   },
   {
     number: '09',
-    title: 'Exhibitions',
-    slug: 'exhibitions',
-    portfolioCategory: 'Events',
-    icon: MonitorPlay,
-    image: 'https://res.cloudinary.com/anbsskt4/image/upload/Exibution_vxb2pm.jpg',
-    cta: 'Explore More',
-    label: 'Brand Spaces',
-    description: 'Seamless exhibition management and custom stand designs that capture attention and maximize brand presence.',
-    features: ['Booth Design', 'Stand Construction', 'Visitor Engagement', 'Product Displays', 'Logistics', 'On-site Management'],
-  },
-  {
-    number: '10',
-    title: 'Trade Show Displays',
+    title: 'Trade Show Displays and Exhibitions',
     slug: 'trade-show-displays',
     portfolioCategory: 'Events',
     icon: MonitorPlay,
@@ -172,7 +160,7 @@ const services = [
     features: ['Display Booths', 'Roll-up Banners', 'Pop-up Displays', 'Modular Stands', 'Branded Furniture', 'Graphic Printing'],
   },
   {
-    number: '11',
+    number: '10',
     title: 'AV Installation and Integration',
     slug: 'av-installation-integration',
     portfolioCategory: 'All',
@@ -211,30 +199,36 @@ function ServiceCard({ service, index }) {
         animate={isInView ? { clipPath: 'inset(0 0% 0 0%)' } : {}}
         transition={{ duration: 1.1, ease: [0.76, 0, 0.24, 1], delay: 0.1 }}
       >
-        <img
-          src={service.image}
-          alt={`${service.title} by Lead Events UAE`}
-          loading="lazy"
-          className="absolute inset-0 h-full w-full object-cover transition-transform duration-[1400ms] ease-out group-hover:scale-110 opacity-80"
-        />
-        {/* Gradient overlay */}
-        <div className={`absolute inset-0 bg-gradient-to-${isEven ? 'r' : 'l'} from-transparent to-[#050505]/80`} />
-        {/* Big service number watermark */}
-        <div className="absolute bottom-0 right-0 p-6 pointer-events-none select-none">
-          <span
-            className="text-[clamp(5rem,14vw,10rem)] font-black leading-none tracking-tighter"
-            style={{ WebkitTextStroke: '1px rgba(255,255,255,0.12)', color: 'transparent' }}
-          >
-            {service.number}
-          </span>
-        </div>
-        {/* Label pill */}
-        <div className="absolute top-6 left-6">
-          <span className="inline-flex items-center gap-2 bg-[#c62828]/90 backdrop-blur-sm px-4 py-1.5 text-[10px] font-black tracking-[0.25em] uppercase text-white">
-            <service.icon className="w-3 h-3" />
-            {service.label}
-          </span>
-        </div>
+        <Link 
+          to="/portfolio" 
+          state={{ category: service.portfolioCategory }} 
+          className="absolute inset-0 block w-full h-full cursor-hover-target z-10"
+        >
+          <img
+            src={service.image}
+            alt={`${service.title} by Lead Events UAE`}
+            loading="lazy"
+            className="absolute inset-0 h-full w-full object-cover transition-transform duration-[1400ms] ease-out group-hover:scale-110 opacity-80"
+          />
+          {/* Gradient overlay */}
+          <div className={`absolute inset-0 bg-gradient-to-${isEven ? 'r' : 'l'} from-transparent to-[#050505]/80`} />
+          {/* Big service number watermark */}
+          <div className="absolute bottom-0 right-0 p-6 pointer-events-none select-none">
+            <span
+              className="text-[clamp(5rem,14vw,10rem)] font-black leading-none tracking-tighter"
+              style={{ WebkitTextStroke: '1px rgba(255,255,255,0.12)', color: 'transparent' }}
+            >
+              {service.number}
+            </span>
+          </div>
+          {/* Label pill */}
+          <div className="absolute top-6 left-6">
+            <span className="inline-flex items-center gap-2 bg-[#c62828]/90 backdrop-blur-sm px-4 py-1.5 text-[10px] font-black tracking-[0.25em] uppercase text-white">
+              <service.icon className="w-3 h-3" />
+              {service.label}
+            </span>
+          </div>
+        </Link>
       </motion.div>
 
       {/* Content panel */}
