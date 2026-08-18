@@ -120,7 +120,7 @@ export default function Home() {
       slug: "truss-rental",
       desc: "Safe, heavy-duty staging trusses and rigging support solutions to secure all lighting, sound, and screen equipment.",
       icon: Hammer,
-      image: "https://res.cloudinary.com/anbsskt4/image/upload/103_ypgsdc.jpg"
+      image: "https://res.cloudinary.com/anbsskt4/image/upload/ChatGPT_Image_Aug_5_2026_09_39_23_AM_zapw4f.jpg"
     },
     {
       title: "Event Fabrication and Production",

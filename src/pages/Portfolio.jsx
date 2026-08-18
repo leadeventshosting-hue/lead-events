@@ -33,6 +33,8 @@ export default function Portfolio() {
     'All',
     'Fabrication',
     'Furniture',
+    'Entertainment',
+    'Club Installations',
     'Kids Entertainment',
     'Podium',
     'Screen',

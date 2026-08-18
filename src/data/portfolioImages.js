@@ -148,4 +148,22 @@ export const portfolioImages = [
   { "category": "Truss", "src": "https://res.cloudinary.com/anbsskt4/image/upload/ChatGPT_Image_Aug_5_2026_09_40_52_AM_bsvc6w.jpg" },
   { "category": "Truss", "src": "https://res.cloudinary.com/anbsskt4/image/upload/ChatGPT_Image_Aug_5_2026_09_39_23_AM_rkvupv.jpg" },
   { "category": "Truss", "src": "https://res.cloudinary.com/anbsskt4/image/upload/ChatGPT_Image_Aug_5_2026_09_35_53_AM_qjzlgm.jpg" },
+
+  // ─── Entertainment ──────────────────────────────────────────────
+  { "category": "Entertainment", "src": "https://res.cloudinary.com/anbsskt4/image/upload/ChatGPT_Image_Apr_10_2026_10_42_45_AM_ywp58q.jpg" },
+  { "category": "Entertainment", "src": "https://res.cloudinary.com/anbsskt4/image/upload/ChatGPT_Image_Jun_3_2026_12_06_34_PM_tkapk3.jpg" },
+  { "category": "Entertainment", "src": "https://res.cloudinary.com/anbsskt4/image/upload/Aug_3_2026_09_18_30_AM_u8mrgi.jpg" },
+  { "category": "Entertainment", "src": "https://res.cloudinary.com/anbsskt4/image/upload/ChatGPT_Image_Jun_3_2026_12_04_18_PM_ntepvd.jpg" },
+  { "category": "Entertainment", "src": "https://res.cloudinary.com/anbsskt4/image/upload/ChatGPT_Image_Jun_3_2026_12_01_31_PM_kbagax.jpg" },
+  { "category": "Entertainment", "src": "https://res.cloudinary.com/anbsskt4/image/upload/ChatGPT_Image_Jun_3_2026_12_10_18_PM_tvmnun.jpg" },
+  { "category": "Entertainment", "src": "https://res.cloudinary.com/anbsskt4/image/upload/ChatGPT_Image_Jun_3_2026_11_59_08_AM_obgsl2.jpg" },
+  { "category": "Entertainment", "src": "https://res.cloudinary.com/anbsskt4/image/upload/ChatGPT_Image_Aug_5_2026_09_17_36_AM_usbpvd.jpg" },
+  { "category": "Entertainment", "src": "https://res.cloudinary.com/anbsskt4/image/upload/ChatGPT_Image_Aug_5_2026_09_15_18_AM_x2lokp.jpg" },
+
+  // ─── Club Installations ─────────────────────────────────────────
+  { "category": "Club Installations", "src": "https://res.cloudinary.com/anbsskt4/image/upload/ChatGPT_Image_Aug_8_2026_08_47_57_PM_xeh05o.jpg" },
+  { "category": "Club Installations", "src": "https://res.cloudinary.com/anbsskt4/image/upload/ChatGPT_Image_Aug_8_2026_08_55_06_PM_kwvywy.jpg" },
+  { "category": "Club Installations", "src": "https://res.cloudinary.com/anbsskt4/image/upload/venue-enhanced-4k_ofuvis.jpg" },
+  { "category": "Club Installations", "src": "https://res.cloudinary.com/anbsskt4/image/upload/ChatGPT_Image_Aug_8_2026_08_43_37_PM_ijwvrt.jpg" },
+  { "category": "Club Installations", "src": "https://res.cloudinary.com/anbsskt4/image/upload/ChatGPT_Image_Aug_8_2026_08_27_48_PM_gm72ji.jpg" }
 ];

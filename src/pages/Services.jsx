@@ -105,7 +105,7 @@ const services = [
     slug: 'truss-rental',
     portfolioCategory: 'Truss',
     icon: Hammer,
-    image: 'https://res.cloudinary.com/anbsskt4/image/upload/103_ypgsdc.jpg',
+    image: 'https://res.cloudinary.com/anbsskt4/image/upload/ChatGPT_Image_Aug_5_2026_09_39_23_AM_zapw4f.jpg',
     cta: 'Explore More',
     label: 'Structural Support',
     description: 'Safe, heavy-duty staging trusses and rigging support solutions to secure all lighting, sound, and screen equipment.',
@@ -153,7 +153,7 @@ const services = [
     slug: 'trade-show-displays',
     portfolioCategory: 'Events',
     icon: MonitorPlay,
-    image: 'https://res.cloudinary.com/anbsskt4/image/upload/107_ly8g3b.jpg',
+    image: 'https://res.cloudinary.com/anbsskt4/image/upload/ChatGPT_Image_Aug_5_2026_08_58_54_AM_bq86du.jpg',
     cta: 'Explore More',
     label: 'Exhibition Stands',
     description: 'Professional trade show booths and display materials designed to attract visitors and showcase products.',
@@ -170,6 +170,18 @@ const services = [
     label: 'Permanent Integrations',
     description: 'Permanent AV solutions for hotels, conference centers, auditoriums, retail environments, and offices. We design and install high-performance audiovisual systems tailored to your business requirements.',
     features: ['Meeting Rooms', 'Auditoriums', 'LED Installations', 'Digital Signage', 'Control Systems', 'Maintenance'],
+  },
+  {
+    number: '11',
+    title: 'Club Installations',
+    slug: 'club-installations',
+    portfolioCategory: 'Club Installations',
+    icon: Sparkles,
+    image: 'https://res.cloudinary.com/anbsskt4/image/upload/ChatGPT_Image_Aug_8_2026_08_27_48_PM_ydssry.jpg',
+    cta: 'Explore More',
+    label: 'Nightlife Tech',
+    description: 'State-of-the-art sound, lighting, and visual system integration for nightclubs, bars, and lounges. We design and install high-impact, immersive entertainment environments.',
+    features: ['Professional Sound Systems', 'Intelligent Dancefloor Lighting', 'LED Screen Integration', 'Laser Show Systems', 'DMX Lighting Control', 'Acoustic Treatments'],
   }
 ];
 
