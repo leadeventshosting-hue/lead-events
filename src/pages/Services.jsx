@@ -139,7 +139,7 @@ const services = [
     number: '08',
     title: 'Entertainment',
     slug: 'entertainment',
-    portfolioCategory: 'Kids Entertainment',
+    portfolioCategory: 'Entertainment',
     icon: Clapperboard,
     image: 'https://res.cloudinary.com/anbsskt4/image/upload/Entertainment_vpvbot.jpg',
     cta: 'Explore More',
