@@ -8,6 +8,7 @@ import { portfolioImages } from '../data/portfolioImages';
 export default function Portfolio() {
   const location = useLocation();
   const [filter, setFilter] = useState(location.state?.category || 'All');
+  const [selectedImageIndex, setSelectedImageIndex] = useState(null);
 
   useEffect(() => {
     if (location.state?.category) {
@@ -53,6 +54,44 @@ export default function Portfolio() {
     .filter((_, index) => index !== 7 && index !== 8);
 
   const filteredProjects = filter === 'All' ? projects : projects.filter((project) => project.category === filter);
+
+  // Reset selected image when changing category filter to avoid out of bounds
+  useEffect(() => {
+    setSelectedImageIndex(null);
+  }, [filter]);
+
+  const handlePrev = (e) => {
+    e.stopPropagation();
+    if (selectedImageIndex !== null) {
+      setSelectedImageIndex((prevIndex) =>
+        prevIndex === 0 ? filteredProjects.length - 1 : prevIndex - 1
+      );
+    }
+  };
+
+  const handleNext = (e) => {
+    e.stopPropagation();
+    if (selectedImageIndex !== null) {
+      setSelectedImageIndex((prevIndex) =>
+        prevIndex === filteredProjects.length - 1 ? 0 : prevIndex + 1
+      );
+    }
+  };
+
+  useEffect(() => {
+    const handleKeyDown = (e) => {
+      if (selectedImageIndex === null) return;
+      if (e.key === 'ArrowLeft') {
+        setSelectedImageIndex((prev) => (prev === 0 ? filteredProjects.length - 1 : prev - 1));
+      } else if (e.key === 'ArrowRight') {
+        setSelectedImageIndex((prev) => (prev === filteredProjects.length - 1 ? 0 : prev + 1));
+      } else if (e.key === 'Escape') {
+        setSelectedImageIndex(null);
+      }
+    };
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, [selectedImageIndex, filteredProjects]);
 
   return (
     <>
@@ -134,7 +173,7 @@ export default function Portfolio() {
           {/* Uniform responsive image grid */}
           <motion.div layout className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
             <AnimatePresence>
-              {filteredProjects.map((project) => (
+              {filteredProjects.map((project, idx) => (
                 <motion.div
                   key={project.id}
                   layout
@@ -142,7 +181,8 @@ export default function Portfolio() {
                   animate={{ opacity: 1, scale: 1 }}
                   exit={{ opacity: 0, scale: 0.95 }}
                   transition={{ duration: 0.5 }}
-                  className="group relative aspect-[4/3] overflow-hidden cursor-hover-target bg-black"
+                  className="group relative aspect-[4/3] overflow-hidden cursor-hover-target bg-black cursor-pointer"
+                  onClick={() => setSelectedImageIndex(idx)}
                 >
                   <img 
                     src={project.image} 
@@ -158,6 +198,75 @@ export default function Portfolio() {
           
         </div>
       </section>
+
+      {/* Lightbox Modal */}
+      <AnimatePresence>
+        {selectedImageIndex !== null && filteredProjects[selectedImageIndex] && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.3 }}
+            className="fixed inset-0 z-[100] flex items-center justify-center bg-black/95 backdrop-blur-sm p-4 select-none"
+            onClick={() => setSelectedImageIndex(null)}
+          >
+            {/* Close Button */}
+            <button
+              onClick={() => setSelectedImageIndex(null)}
+              className="absolute top-6 right-6 text-white/70 hover:text-white transition-colors duration-300 p-2 cursor-hover-target z-50 bg-white/10 hover:bg-white/20 rounded-full"
+              aria-label="Close Lightbox"
+            >
+              <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M6 18L18 6M6 6l12 12" />
+              </svg>
+            </button>
+
+            {/* Left Arrow */}
+            <button
+              onClick={handlePrev}
+              className="absolute left-4 md:left-8 text-white/70 hover:text-white transition-all duration-300 p-3 cursor-hover-target z-50 bg-white/10 hover:bg-white/20 rounded-full hover:scale-105"
+              aria-label="Previous Image"
+            >
+              <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M15 19l-7-7 7-7" />
+              </svg>
+            </button>
+
+            {/* Image Container with Animation */}
+            <motion.div
+              key={selectedImageIndex}
+              initial={{ scale: 0.95, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              exit={{ scale: 0.95, opacity: 0 }}
+              transition={{ duration: 0.3 }}
+              className="relative max-w-full max-h-[85vh] flex flex-col items-center justify-center"
+              onClick={(e) => e.stopPropagation()}
+            >
+              <img
+                src={filteredProjects[selectedImageIndex].image}
+                alt={`${filteredProjects[selectedImageIndex].category} portfolio project`}
+                className="max-w-full max-h-[75vh] md:max-h-[80vh] object-contain rounded-md shadow-2xl"
+              />
+              
+              {/* Category label / caption at the bottom */}
+              <div className="mt-4 px-6 py-2 bg-white/10 text-white text-sm tracking-[0.2em] font-semibold uppercase rounded-full border border-white/20">
+                {filteredProjects[selectedImageIndex].category}
+              </div>
+            </motion.div>
+
+            {/* Right Arrow */}
+            <button
+              onClick={handleNext}
+              className="absolute right-4 md:right-8 text-white/70 hover:text-white transition-all duration-300 p-3 cursor-hover-target z-50 bg-white/10 hover:bg-white/20 rounded-full hover:scale-105"
+              aria-label="Next Image"
+            >
+              <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M9 5l7 7-7 7" />
+              </svg>
+            </button>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </>
   );
 }
