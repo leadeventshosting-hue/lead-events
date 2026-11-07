@@ -24,10 +24,9 @@ export default function SEO({
   noIndex = false,
 }) {
   const SITE_NAME   = 'Lead Events';
-  const SITE_URL    = 'https://www.leadevents.ae';
-  const PHONE       = '+971501234567';
-  const EMAIL       = 'info@leadevents.ae';
-  const ADDRESS     = 'Boulevard Plaza, Tower 1, Business Bay, Dubai, UAE';
+  const SITE_URL    = 'https://www.leadevents.com';
+  const PHONE       = '+971509689671';
+  const EMAIL       = 'info@leadevents.com';
   const DEFAULT_IMG = `${SITE_URL}/og-cover.jpg`;
 
   const fullTitle = title
@@ -45,10 +44,10 @@ export default function SEO({
   const pageCanonical = canonical || SITE_URL;
   const ogImg         = ogImage   || DEFAULT_IMG;
 
-  /* ── LocalBusiness schema (always injected) ── */
-  const localBusinessSchema = {
+  /* ── Canonical Organization schema ── */
+  const organizationSchema = {
     '@context': 'https://schema.org',
-    '@type': ['LocalBusiness', 'EventVenue'],
+    '@type': 'Organization',
     '@id': `${SITE_URL}/#organization`,
     name: 'Lead Events',
     alternateName: 'Lead Events UAE',
@@ -58,38 +57,23 @@ export default function SEO({
     email: EMAIL,
     logo: `${SITE_URL}/logo.png`,
     image: ogImg,
-    priceRange: '$$$',
-    currenciesAccepted: 'AED, USD',
-    paymentAccepted: 'Cash, Credit Card, Bank Transfer',
-    openingHoursSpecification: [
-      { '@type': 'OpeningHoursSpecification', dayOfWeek: ['Monday','Tuesday','Wednesday','Thursday','Friday'], opens: '09:00', closes: '19:00' },
-      { '@type': 'OpeningHoursSpecification', dayOfWeek: 'Saturday', opens: '10:00', closes: '16:00' },
-    ],
     address: {
       '@type': 'PostalAddress',
-      streetAddress: 'Boulevard Plaza, Tower 1',
-      addressLocality: 'Business Bay',
+      streetAddress: 'Street 12 - Warehouse 4',
+      addressLocality: 'Umm Ramool',
       addressRegion: 'Dubai',
       addressCountry: 'AE',
     },
-    geo: {
-      '@type': 'GeoCoordinates',
-      latitude: 25.186182,
-      longitude: 55.264938,
-    },
-    hasMap: 'https://maps.google.com/?q=Boulevard+Plaza+Tower+1+Business+Bay+Dubai',
     sameAs: [
-      'https://www.instagram.com/leadevents.ae',
+      'https://www.instagram.com/leadevents_dubai/?hl=en',
       'https://www.linkedin.com/company/leadevents',
-      'https://www.facebook.com/leadeventsae',
     ],
     areaServed: [
       { '@type': 'City', name: 'Dubai' },
       { '@type': 'City', name: 'Abu Dhabi' },
-      { '@type': 'State', name: 'Dubai' },
       { '@type': 'Country', name: 'United Arab Emirates' },
     ],
-    serviceType: [
+    knowsAbout: [
       'Corporate Event Management',
       'Wedding Planning',
       'Gala Dinner Organisation',
@@ -98,19 +82,14 @@ export default function SEO({
       'Product Launch Events',
       'Brand Activations',
     ],
-    aggregateRating: {
-      '@type': 'AggregateRating',
-      ratingValue: '4.9',
-      reviewCount: '124',
-      bestRating: '5',
-    },
   };
 
   /* ── BreadcrumbList schema ── */
-  const breadcrumbSchema = breadcrumbs
+  const breadcrumbSchema = breadcrumbs && breadcrumbs.length > 0
     ? {
         '@context': 'https://schema.org',
         '@type': 'BreadcrumbList',
+        '@id': `${pageCanonical}#breadcrumb`,
         itemListElement: [
           { '@type': 'ListItem', position: 1, name: 'Home', item: SITE_URL },
           ...breadcrumbs.map((b, i) => ({
@@ -123,16 +102,15 @@ export default function SEO({
       }
     : null;
 
-  /* ── WebSite schema (sitelinks search box signal) ── */
+  /* ── WebSite schema ── */
   const websiteSchema = {
     '@context': 'https://schema.org',
     '@type': 'WebSite',
+    '@id': `${SITE_URL}/#website`,
     name: SITE_NAME,
     url: SITE_URL,
-    potentialAction: {
-      '@type': 'SearchAction',
-      target: { '@type': 'EntryPoint', urlTemplate: `${SITE_URL}/search?q={search_term_string}` },
-      'query-input': 'required name=search_term_string',
+    publisher: {
+      '@id': `${SITE_URL}/#organization`,
     },
   };
 
@@ -149,11 +127,6 @@ export default function SEO({
       }
       <link rel="canonical" href={pageCanonical} />
 
-      {/* ── Geo targeting ── */}
-      <meta name="geo.region"      content="AE-DU" />
-      <meta name="geo.placename"   content="Dubai, United Arab Emirates" />
-      <meta name="geo.position"    content="25.186182;55.264938" />
-      <meta name="ICBM"            content="25.186182, 55.264938" />
       <meta name="language"        content="English" />
       <meta name="revisit-after"   content="7 days" />
       <meta name="author"          content="Lead Events UAE" />
@@ -183,9 +156,9 @@ export default function SEO({
       <meta name="apple-mobile-web-app-capable" content="yes" />
       <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
 
-      {/* ── Structured Data: LocalBusiness ── */}
+      {/* ── Structured Data: Organization ── */}
       <script type="application/ld+json">
-        {JSON.stringify(localBusinessSchema)}
+        {JSON.stringify(organizationSchema)}
       </script>
 
       {/* ── Structured Data: WebSite ── */}

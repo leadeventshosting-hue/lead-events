@@ -63,41 +63,12 @@ export default function About() {
   const aboutStructuredData = {
     '@context': 'https://schema.org',
     '@type': 'AboutPage',
+    '@id': 'https://www.leadevents.com/about#webpage',
     name: 'About Lead Events',
     description: seoDescription,
-    url: 'https://leadevents.ae/about',
-    mainEntity: {
-      '@type': 'Organization',
-      name: 'Lead Events',
-      url: 'https://leadevents.ae',
-      description: 'Premium UAE event management company for corporate events, exhibitions, conferences, brand activations, and immersive live experiences.',
-      areaServed: ['Dubai', 'Abu Dhabi', 'Sharjah', 'United Arab Emirates'],
-      knowsAbout: [
-        'Corporate event management',
-        'Exhibition production',
-        'Conference management',
-        'Brand activations',
-        'Luxury event planning',
-        'Live event production'
-      ]
-    },
-    breadcrumb: {
-      '@type': 'BreadcrumbList',
-      itemListElement: [
-        {
-          '@type': 'ListItem',
-          position: 1,
-          name: 'Home',
-          item: 'https://leadevents.ae'
-        },
-        {
-          '@type': 'ListItem',
-          position: 2,
-          name: 'About',
-          item: 'https://leadevents.ae/about'
-        }
-      ]
-    }
+    url: 'https://www.leadevents.com/about',
+    isPartOf: { '@id': 'https://www.leadevents.com/#website' },
+    about: { '@id': 'https://www.leadevents.com/#organization' }
   };
   const missionVisionStructuredData = {
     '@context': 'https://schema.org',
@@ -127,69 +98,18 @@ export default function About() {
       }
     ]
   };
-  const ctaStructuredData = {
-    '@context': 'https://schema.org',
-    '@type': 'ContactPage',
-    name: 'Start Your Event Journey with Lead Events',
-    headline: 'Hire Lead Events for Corporate Event Management in Dubai and the UAE',
-    description: 'Contact Lead Events for corporate event management, exhibitions, conferences, brand activations, and premium live event production in Dubai, Abu Dhabi, and across the UAE.',
-    url: 'https://leadevents.ae/about#event-consultation',
-    mainEntity: {
-      '@type': 'Organization',
-      name: 'Lead Events',
-      url: 'https://leadevents.ae',
-      areaServed: ['Dubai', 'Abu Dhabi', 'United Arab Emirates'],
-      contactPoint: {
-        '@type': 'ContactPoint',
-        contactType: 'event consultation',
-        areaServed: 'AE',
-        availableLanguage: ['English', 'Arabic']
-      },
-      makesOffer: [
-        {
-          '@type': 'Offer',
-          name: 'Corporate Event Management Consultation',
-          category: 'Event Management',
-          areaServed: 'United Arab Emirates'
-        },
-        {
-          '@type': 'Offer',
-          name: 'Exhibitions, Conferences, and Brand Activations',
-          category: 'Live Event Production',
-          areaServed: 'United Arab Emirates'
-        }
-      ]
-    },
-    potentialAction: {
-      '@type': 'ContactAction',
-      target: 'https://leadevents.ae/contact',
-      name: 'Request a Free Event Consultation'
-    }
-  };
   const journeyStructuredData = {
     '@context': 'https://schema.org',
     '@type': 'HowTo',
     name: 'Lead Events Event Management Process',
     description: 'A proven event management methodology for corporate events, exhibitions, conferences, brand activations, and premium live event production in Dubai and the UAE.',
     totalTime: 'P4D',
-    supply: [
-      {
-        '@type': 'HowToSupply',
-        name: 'Brand objectives, audience profile, venue requirements, event scope, and production brief'
-      }
-    ],
-    tool: [
-      {
-        '@type': 'HowToTool',
-        name: 'Creative strategy, 3D event design, audiovisual production, lighting, staging, logistics, and post-event reporting'
-      }
-    ],
     step: timeline.map((item, idx) => ({
       '@type': 'HowToStep',
       position: idx + 1,
       name: item.title,
       text: item.desc,
-      url: `https://leadevents.ae/about#journey-step-${idx + 1}`
+      url: `https://www.leadevents.com/about#journey-step-${idx + 1}`
     }))
   };
 
@@ -199,6 +119,7 @@ export default function About() {
         title="About Lead Events | Event Management Company UAE"
         description={seoDescription}
         keywords={seoKeywords}
+        breadcrumbs={[{ name: 'About', url: 'https://www.leadevents.com/about' }]}
       />
       <Helmet>
         <script type="application/ld+json">
@@ -208,9 +129,6 @@ export default function About() {
           {JSON.stringify(missionVisionStructuredData)}
         </script>
         <script type="application/ld+json">
-          {JSON.stringify(ctaStructuredData)}
-        </script>
-        <script type="application/ld+json">
           {JSON.stringify(journeyStructuredData)}
         </script>
       </Helmet>
@@ -218,11 +136,7 @@ export default function About() {
       {/* Cinematic Hero Section */}
       <section
         className="relative h-screen w-full flex items-center justify-center overflow-hidden"
-        itemScope
-        itemType="https://schema.org/AboutPage"
       >
-        <meta itemProp="name" content="About Lead Events UAE" />
-        <meta itemProp="description" content={seoDescription} />
 
         <motion.div
           style={{ y: yHeroBg }}
@@ -241,7 +155,6 @@ export default function About() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.5 }}
             className="text-[10vw] sm:text-[8vw] md:text-[6.5vw] font-black leading-[0.85] tracking-tighter uppercase mb-6 w-full max-w-[1400px]"
-            itemProp="headline"
           >
             Event Management Company in <span className="text-outline">Dubai & UAE</span>
           </motion.h1>
@@ -251,7 +164,6 @@ export default function About() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 1 }}
             className="text-lg md:text-xl text-brand-text/80 max-w-3xl mb-12 font-light leading-relaxed"
-            itemProp="abstract"
           >
             Lead Events creates premium corporate events, exhibitions, conferences, brand activations, and luxury live experiences across Dubai, Abu Dhabi, and the UAE.
           </motion.p>
@@ -373,15 +285,11 @@ export default function About() {
         
         {/* Mission Panel */}
         <article
-          itemScope
-          itemType="https://schema.org/CreativeWork"
           onMouseEnter={() => setHoveredSection(0)}
           className={`relative min-w-0 flex flex-col justify-center px-8 md:px-16 lg:px-24 py-20 overflow-hidden isolate transition-[flex] duration-1000 ease-[0.16,1,0.3,1] cursor-hover-target group ${
             hoveredSection === 0 ? 'flex-[1.5] lg:flex-[2]' : 'flex-[1]'
           }`}
         >
-          <meta itemProp="name" content="Lead Events Mission" />
-          <meta itemProp="about" content="Corporate event management, exhibitions, conferences, brand activations, and luxury event production in Dubai and the UAE" />
           <div className="absolute inset-0 bg-[url('/about/mission.png')] bg-cover bg-center bg-no-repeat transition-transform duration-[1600ms] group-hover:scale-105" />
           <div className={`absolute inset-0 transition-colors duration-1000 ${hoveredSection === 0 ? 'bg-black/55' : 'bg-black/70'}`} />
           {/* Ambient Glow */}
@@ -396,7 +304,6 @@ export default function About() {
             </div>
             
             <h3
-              itemProp="headline"
               className={`font-black uppercase tracking-tighter transition-all duration-1000 ${
                 hoveredSection === 0
                   ? 'text-5xl md:text-7xl lg:text-8xl text-white mb-8'
@@ -409,7 +316,7 @@ export default function About() {
             <div className={`overflow-hidden transition-all duration-1000 ease-[0.16,1,0.3,1] ${
               hoveredSection === 0 ? 'max-h-[500px] opacity-100 translate-y-0' : 'max-h-0 opacity-0 translate-y-8'
             }`}>
-              <p itemProp="description" className="text-2xl md:text-3xl lg:text-4xl font-light text-white/80 leading-relaxed">
+              <p className="text-2xl md:text-3xl lg:text-4xl font-light text-white/80 leading-relaxed">
                 To deliver <span className="font-bold text-white">innovative</span>, seamless, and <span className="font-bold text-white">high-impact</span> event management solutions for corporate events, exhibitions, conferences, brand activations, and luxury live experiences across Dubai and the UAE.
               </p>
             </div>
@@ -421,15 +328,11 @@ export default function About() {
 
         {/* Vision Panel */}
         <article
-          itemScope
-          itemType="https://schema.org/CreativeWork"
           onMouseEnter={() => setHoveredSection(1)}
           className={`relative min-w-0 flex flex-col justify-center px-8 md:px-16 lg:px-24 py-20 overflow-hidden isolate transition-[flex] duration-1000 ease-[0.16,1,0.3,1] cursor-hover-target group ${
             hoveredSection === 1 ? 'flex-[1.5] lg:flex-[2]' : 'flex-[1]'
           }`}
         >
-          <meta itemProp="name" content="Lead Events Vision" />
-          <meta itemProp="about" content="Trusted event management agency and live event production company in the UAE" />
           <div className="absolute inset-0 bg-[url('/about/vision.png')] bg-cover bg-center bg-no-repeat transition-transform duration-[1600ms] group-hover:scale-105" />
           <div className={`absolute inset-0 transition-colors duration-1000 ${hoveredSection === 1 ? 'bg-black/55' : 'bg-black/70'}`} />
           {/* Ambient Glow */}
@@ -444,7 +347,6 @@ export default function About() {
             </div>
             
             <h3
-              itemProp="headline"
               className={`font-black uppercase tracking-tighter transition-all duration-1000 ${
                 hoveredSection === 1
                   ? 'text-5xl md:text-7xl lg:text-8xl text-white mb-8'
@@ -457,7 +359,7 @@ export default function About() {
             <div className={`overflow-hidden transition-all duration-1000 ease-[0.16,1,0.3,1] ${
               hoveredSection === 1 ? 'max-h-[500px] opacity-100 translate-y-0' : 'max-h-0 opacity-0 translate-y-8'
             }`}>
-              <p itemProp="description" className="text-2xl md:text-3xl lg:text-4xl font-light text-white/80 leading-relaxed">
+              <p className="text-2xl md:text-3xl lg:text-4xl font-light text-white/80 leading-relaxed">
                 To be the region's <span className="font-bold text-white">most trusted</span> and <span className="font-bold text-white">creatively fearless</span> event management agency, setting new benchmarks for live event production, corporate experiences, and brand activations in the UAE.
               </p>
             </div>
@@ -548,17 +450,13 @@ export default function About() {
         id="event-management-process"
         className="py-12 md:py-20 bg-[#fbf8f3] text-brand-dark relative border-t border-black/10"
         ref={containerRef}
-        itemScope
-        itemType="https://schema.org/HowTo"
         aria-labelledby="event-management-process-heading"
       >
-        <meta itemProp="name" content="Lead Events Event Management Process" />
-        <meta itemProp="description" content="A proven event management methodology for corporate events, exhibitions, conferences, brand activations, and premium live event production in Dubai and the UAE." />
         <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-brand-red/45 to-transparent" />
         <div className="container mx-auto px-6 lg:px-12">
           <div className="text-center mb-10 md:mb-14">
-            <h2 id="event-management-process-heading" itemProp="headline" className="text-[6vw] sm:text-[4vw] font-black uppercase tracking-tighter leading-none mb-6 text-brand-dark">The Journey</h2>
-            <p itemProp="abstract" className="text-xl text-brand-dark/75 max-w-2xl mx-auto font-light">Our proven methodology for corporate event management, exhibition production, conference planning, brand activations, and live event excellence across Dubai and the UAE.</p>
+            <h2 id="event-management-process-heading" className="text-[6vw] sm:text-[4vw] font-black uppercase tracking-tighter leading-none mb-6 text-brand-dark">The Journey</h2>
+            <p className="text-xl text-brand-dark/75 max-w-2xl mx-auto font-light">Our proven methodology for corporate event management, exhibition production, conference planning, brand activations, and live event excellence across Dubai and the UAE.</p>
           </div>
 
           <div className="max-w-4xl mx-auto relative">
@@ -579,17 +477,13 @@ export default function About() {
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true, margin: "-100px" }}
                 className="flex gap-8 md:gap-12 mb-12 md:mb-16 last:mb-0 relative cursor-hover-target group"
-                itemProp="step"
-                itemScope
-                itemType="https://schema.org/HowToStep"
               >
-                <meta itemProp="position" content={idx + 1} />
                 <div className="flex-shrink-0 w-14 h-14 rounded-full bg-[#fbf8f3] border-2 border-brand-red flex items-center justify-center font-bold text-xl relative z-10 transition-transform duration-300 group-hover:scale-110 group-hover:bg-brand-red group-hover:text-white shadow-[0_0_20px_rgba(230,57,70,0.3)]">
                   {item.year}
                 </div>
                 <div className="pt-2">
-                  <h3 itemProp="name" className="text-2xl sm:text-3xl md:text-4xl font-black mb-4 tracking-tighter uppercase text-brand-dark">{item.title}</h3>
-                  <p itemProp="text" className="text-brand-dark/75 text-xl font-light leading-relaxed max-w-lg">{item.desc}</p>
+                  <h3 className="text-2xl sm:text-3xl md:text-4xl font-black mb-4 tracking-tighter uppercase text-brand-dark">{item.title}</h3>
+                  <p className="text-brand-dark/75 text-xl font-light leading-relaxed max-w-lg">{item.desc}</p>
                 </div>
               </motion.div>
             ))}
@@ -597,20 +491,14 @@ export default function About() {
         </div>
       </section>
 
-      {/* Premium, Highly SEO-Structured Call to Action */}
+      {/* Premium Call to Action */}
       <section
         id="event-consultation"
         ref={ctaRef}
         onMouseMove={handleCtaMouseMove}
         className="py-32 relative overflow-hidden bg-gradient-to-br from-[#050202] via-[#1a0505] to-[#050202] border-t border-white/5"
-        itemScope
-        itemType="https://schema.org/ContactPage"
         aria-labelledby="event-consultation-heading"
       >
-        <meta itemProp="name" content="Event Management Consultation with Lead Events" />
-        <meta itemProp="description" content="Request a free event consultation for corporate events, exhibitions, conferences, brand activations, and live event production in Dubai and the UAE." />
-        <link itemProp="url" href="https://leadevents.ae/about#event-consultation" />
-
         <div className="absolute inset-0 bg-[url('/about/CTA.png')] bg-cover bg-center bg-no-repeat opacity-20 pointer-events-none" />
         <div className="absolute inset-0 bg-noise opacity-15 pointer-events-none mix-blend-overlay" />
 
@@ -656,7 +544,6 @@ export default function About() {
 
             <h2
               id="event-consultation-heading"
-              itemProp="headline"
               className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black tracking-tighter leading-[1.05] uppercase text-white mb-8 max-w-3xl"
             >
               Ready to Elevate Your <br />
@@ -664,13 +551,11 @@ export default function About() {
               in Dubai & UAE?
             </h2>
 
-            <p itemProp="description" className="text-base md:text-lg text-brand-text/70 font-light max-w-3xl mb-12 leading-relaxed">
+            <p className="text-base md:text-lg text-brand-text/70 font-light max-w-3xl mb-12 leading-relaxed">
               Partner with Lead Events, a trusted event management company in Dubai specializing in corporate event planning, exhibition production, conference management, brand activations, and premium live experiences across the UAE. Request a consultation to create memorable events that inspire audiences and deliver measurable impact.
             </p>
 
-            <div className="flex flex-wrap justify-center gap-6 w-full" itemProp="potentialAction" itemScope itemType="https://schema.org/ContactAction">
-              <meta itemProp="name" content="Request a Free Event Consultation" />
-              <link itemProp="target" href="https://leadevents.ae/contact" />
+            <div className="flex flex-wrap justify-center gap-6 w-full">
               <Button
                 to="/contact"
                 variant="primary"

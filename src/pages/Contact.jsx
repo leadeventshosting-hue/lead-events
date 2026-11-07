@@ -4,7 +4,7 @@ import { Mail, MapPin, Phone, MessageCircle, Send, Clock, ArrowRight, CheckCircl
 import SEO from '../components/SEO';
 
 /* ── Page-level SEO constants ── */
-const SITE_URL = 'https://www.leadevents.ae';
+const SITE_URL = 'https://www.leadevents.com';
 
 const contactPageSchema = {
   '@context': 'https://schema.org',
@@ -17,20 +17,19 @@ const contactPageSchema = {
   isPartOf: { '@id': `${SITE_URL}/#website` },
   about: { '@id': `${SITE_URL}/#organization` },
   inLanguage: 'en-AE',
-  breadcrumb: { '@id': `${SITE_URL}/contact#breadcrumb` },
   mainEntity: {
-    '@type': 'LocalBusiness',
+    '@type': 'Organization',
+    '@id': `${SITE_URL}/#organization`,
     name: 'Lead Events',
     telephone: '+971509689671',
-    email: 'info@leadevents.ae',
+    email: 'info@leadevents.com',
     address: {
       '@type': 'PostalAddress',
-      streetAddress: 'Boulevard Plaza, Tower 1',
-      addressLocality: 'Business Bay',
+      streetAddress: 'Street 12 - Warehouse 4',
+      addressLocality: 'Umm Ramool',
       addressRegion: 'Dubai',
       addressCountry: 'AE',
     },
-    openingHours: ['Mo-Fr 09:00-19:00', 'Sa 10:00-16:00'],
     contactPoint: [
       {
         '@type': 'ContactPoint',
@@ -38,11 +37,10 @@ const contactPageSchema = {
         contactType: 'customer service',
         areaServed: 'AE',
         availableLanguage: ['English', 'Arabic'],
-        contactOption: 'TollFree',
       },
       {
         '@type': 'ContactPoint',
-        email: 'info@leadevents.ae',
+        email: 'info@leadevents.com',
         contactType: 'sales',
         areaServed: 'AE',
       },
@@ -190,7 +188,7 @@ export default function Contact() {
       '',
       data.get('message') || '',
     ].join('\n');
-    window.location.href = `mailto:info@leadevents.ae?subject=${encodeURIComponent('New Event Inquiry')}&body=${encodeURIComponent(body)}`;
+    window.location.href = `mailto:info@leadevents.com?subject=${encodeURIComponent('New Event Inquiry')}&body=${encodeURIComponent(body)}`;
     setSubmitted(true);
     setTimeout(() => setSubmitted(false), 5000);
   };
@@ -210,27 +208,25 @@ export default function Contact() {
       <section
         ref={heroRef}
         aria-label="Contact Lead Events — Event Management Company Dubai UAE"
-        itemScope
-        itemType="https://schema.org/ContactPage"
         className="relative min-h-[90vh] flex items-center overflow-hidden"
       >
         {/* Hidden SEO text block — crawlable but visually hidden */}
         <div className="sr-only">
           <h2>Contact Lead Events — Dubai&apos;s Premier Event Management Company</h2>
           <p>
-            Lead Events is the UAE&apos;s top-rated event management company based in Business Bay, Dubai.
+            Lead Events is the UAE&apos;s top-rated event management company based in Dubai.
             We specialise in corporate events, weddings, gala dinners, product launches, conferences,
             exhibitions, and brand activations. Contact our expert team today for a free consultation
             and event quote. We serve clients across Dubai, Abu Dhabi, Sharjah, and the wider UAE.
           </p>
-          <address itemScope itemType="https://schema.org/PostalAddress">
-            <span itemProp="streetAddress">Boulevard Plaza, Tower 1</span>,{' '}
-            <span itemProp="addressLocality">Business Bay</span>,{' '}
-            <span itemProp="addressRegion">Dubai</span>,{' '}
-            <span itemProp="addressCountry">UAE</span>
+          <address>
+            <span>Street 12 - Warehouse 4</span>,{' '}
+            <span>Umm Ramool</span>,{' '}
+            <span>Dubai</span>,{' '}
+            <span>UAE</span>
           </address>
-          <a href="tel:+971501234567" itemProp="telephone">+971 50 123 4567</a>
-          <a href="mailto:info@leadevents.ae" itemProp="email">info@leadevents.ae</a>
+          <a href="tel:+971509689671">+971 50 968 9671</a>
+          <a href="mailto:info@leadevents.com">info@leadevents.com</a>
           <ul>
             <li>Corporate Event Management Dubai</li>
             <li>Wedding Planner UAE</li>
@@ -278,7 +274,6 @@ export default function Contact() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.15 }}
               className="text-[12vw] sm:text-[8vw] lg:text-[7vw] font-black uppercase tracking-tighter leading-[0.9] mb-8"
-              itemProp="headline"
             >
               Contact
               <br />
@@ -293,7 +288,6 @@ export default function Contact() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.7, delay: 0.3 }}
               className="text-lg lg:text-xl text-brand-text/50 leading-relaxed font-light max-w-2xl mb-6"
-              itemProp="description"
             >
               Get in touch with Dubai&apos;s #1 event management company. Whether you need a{' '}
               <strong className="text-white/70 font-medium">corporate event planner</strong>,{' '}
@@ -508,9 +502,9 @@ export default function Contact() {
                     Skip the form. Connect directly with an event specialist on WhatsApp — get answers in minutes.
                   </p>
                   <a
-                    href="https://wa.me/971501234567"
+                    href="https://wa.me/971509689671"
                     target="_blank"
-                    rel="noreferrer"
+                    rel="noopener noreferrer"
                     className="inline-flex items-center gap-3 w-full justify-center py-4 px-6 border-2 border-green-500/60 text-green-700 font-bold text-sm tracking-[0.15em] uppercase rounded-xl hover:bg-green-500/10 transition-colors duration-300 group/wa"
                   >
                     <MessageCircle size={18} className="group-hover/wa:rotate-12 transition-transform" />

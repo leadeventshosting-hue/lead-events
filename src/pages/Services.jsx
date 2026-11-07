@@ -199,10 +199,7 @@ function ServiceCard({ service, index }) {
       animate={isInView ? { opacity: 1 } : {}}
       transition={{ duration: 0.6 }}
       className="relative grid grid-cols-1 lg:grid-cols-2 min-h-[600px] group border-b border-black/10 last:border-b-0"
-      itemScope
-      itemType="https://schema.org/Service"
     >
-      <meta itemProp="serviceType" content={service.title} />
 
       {/* Image panel */}
       <motion.div
@@ -258,7 +255,6 @@ function ServiceCard({ service, index }) {
 
         <RevealText delay={0.15}>
           <h2
-            itemProp="name"
             className="text-[clamp(2.4rem,5vw,4.5rem)] font-black uppercase tracking-tighter leading-[0.88] mb-6 text-brand-dark"
           >
             {service.title}
@@ -266,7 +262,7 @@ function ServiceCard({ service, index }) {
         </RevealText>
 
         <FadeUp delay={0.25}>
-          <p itemProp="description" className="text-brand-dark/60 font-light leading-relaxed mb-8 text-base lg:text-lg max-w-lg">
+          <p className="text-brand-dark/60 font-light leading-relaxed mb-8 text-base lg:text-lg max-w-lg">
             {service.description}
           </p>
         </FadeUp>
@@ -326,16 +322,30 @@ export default function Services() {
         '@type': 'Service',
         name: service.title,
         description: service.description,
-        url: `https://leadevents.ae/services#${service.slug}`,
-        provider: { '@type': 'Organization', name: 'Lead Events', url: 'https://leadevents.ae' },
-        areaServed: ['Dubai', 'Abu Dhabi', 'Sharjah', 'United Arab Emirates'],
+        url: `https://www.leadevents.com/services#${service.slug}`,
+        provider: {
+          '@type': 'Organization',
+          '@id': 'https://www.leadevents.com/#organization',
+          name: 'Lead Events',
+          url: 'https://www.leadevents.com',
+        },
+        areaServed: [
+          { '@type': 'City', name: 'Dubai' },
+          { '@type': 'City', name: 'Abu Dhabi' },
+          { '@type': 'Country', name: 'United Arab Emirates' },
+        ],
       },
     })),
   };
 
   return (
     <>
-      <SEO title="Event Management Services UAE" description={seoDescription} keywords={seoKeywords} />
+      <SEO
+        title="Event Management Services UAE"
+        description={seoDescription}
+        keywords={seoKeywords}
+        breadcrumbs={[{ name: 'Services', url: 'https://www.leadevents.com/services' }]}
+      />
       <Helmet>
         <script type="application/ld+json">{JSON.stringify(serviceStructuredData)}</script>
       </Helmet>
@@ -343,11 +353,7 @@ export default function Services() {
       {/* ══════════ HERO (UNTOUCHED) ══════════ */}
       <section
         className="relative h-screen w-full flex items-center justify-center overflow-hidden"
-        itemScope
-        itemType="https://schema.org/Service"
       >
-        <meta itemProp="name" content="Lead Events UAE Event Management Services" />
-        <meta itemProp="description" content="A full spectrum of event management services combining creative vision with technical precision across Dubai and the UAE." />
 
         <motion.div
           style={{ y: yHeroBg }}
@@ -366,7 +372,6 @@ export default function Services() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.5 }}
             className="text-[10vw] sm:text-[8vw] md:text-[6.5vw] font-black leading-[0.85] tracking-tighter uppercase mb-6 w-full max-w-[1400px]"
-            itemProp="headline"
           >
             Flawless <span className="text-outline">Execution</span>
           </motion.h1>
@@ -376,7 +381,6 @@ export default function Services() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 1 }}
             className="text-lg md:text-xl text-brand-text/80 max-w-3xl mb-12 font-light leading-relaxed"
-            itemProp="description"
           >
             We offer a full spectrum of event management services, combining creative vision with technical precision for corporate events, exhibitions, conferences, and brand activations across the UAE.
           </motion.p>

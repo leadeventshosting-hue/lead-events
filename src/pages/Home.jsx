@@ -2,7 +2,6 @@ import { useRef, useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { motion, useScroll, useTransform, AnimatePresence } from 'framer-motion';
 import { ArrowRight, Star, Calendar, Users, Briefcase, Award, ChevronLeft, ChevronRight, Volume2, ScreenShare, Sparkles, Hammer, Headphones, MonitorPlay } from 'lucide-react';
-import { Helmet } from 'react-helmet-async';
 import Button from '../components/ui/Button';
 import SEO from '../components/SEO';
 
@@ -152,173 +151,6 @@ export default function Home() {
     setCtaMouse({ x, y });
   };
 
-  // Structured Data (JSON-LD) for Local Event Management Company SEO
-  const structuredData = {
-    "@context": "https://schema.org",
-    "@type": "EventVenue",
-    "name": "Lead Events UAE",
-    "description": "Lead Events is a premier corporate event management and brand activation company in Dubai & UAE.",
-    "url": window.location.origin,
-    "telephone": "+97140000000",
-    "address": {
-      "@type": "PostalAddress",
-      "addressLocality": "Dubai",
-      "addressRegion": "Dubai",
-      "addressCountry": "AE"
-    },
-    "geo": {
-      "@type": "GeoCoordinates",
-      "latitude": "25.2048",
-      "longitude": "55.2708"
-    },
-    "sameAs": [
-      "https://www.instagram.com/leadevents",
-      "https://www.linkedin.com/company/leadevents"
-    ],
-    "service": [
-      "Corporate Event Management",
-      "Brand Activations & Immersive Experiences",
-      "Conferences & Seminars",
-      "Exhibitions & Trade Show Stands"
-    ],
-    "aggregateRating": {
-      "@type": "AggregateRating",
-      "ratingValue": "5.0",
-      "reviewCount": "10"
-    },
-    "review": [
-      {
-        "@type": "Review",
-        "author": {
-          "@type": "Person",
-          "name": "Sarah Jenkins"
-        },
-        "reviewBody": "Lead Events transformed our product launch into an immersive digital journey. The attention to detail and premium styling was absolutely world-class.",
-        "reviewRating": {
-          "@type": "Rating",
-          "ratingValue": "5",
-          "bestRating": "5"
-        }
-      },
-      {
-        "@type": "Review",
-        "author": {
-          "@type": "Person",
-          "name": "Marcus Vance"
-        },
-        "reviewBody": "A truly professional partner in Dubai. They managed our regional B2B summit with flawless execution. Highly recommended for corporate events.",
-        "reviewRating": {
-          "@type": "Rating",
-          "ratingValue": "5",
-          "bestRating": "5"
-        }
-      },
-      {
-        "@type": "Review",
-        "author": {
-          "@type": "Person",
-          "name": "Fatma Al Suwaidi"
-        },
-        "reviewBody": "Exceptional creativity and flawless delivery. Lead Events understands the luxury landscape of the UAE like no other agency.",
-        "reviewRating": {
-          "@type": "Rating",
-          "ratingValue": "5",
-          "bestRating": "5"
-        }
-      },
-      {
-        "@type": "Review",
-        "author": {
-          "@type": "Person",
-          "name": "David Laurent"
-        },
-        "reviewBody": "From concept to clean-up, the team was remarkable. They engineered a gala dinner that our partners are still talking about.",
-        "reviewRating": {
-          "@type": "Rating",
-          "ratingValue": "5",
-          "bestRating": "5"
-        }
-      },
-      {
-        "@type": "Review",
-        "author": {
-          "@type": "Person",
-          "name": "Yasmin Al Maktoum"
-        },
-        "reviewBody": "The team executed our fashion launch with cinematic perfection. Bold, modern, and absolutely stunning aesthetics.",
-        "reviewRating": {
-          "@type": "Rating",
-          "ratingValue": "5",
-          "bestRating": "5"
-        }
-      },
-      {
-        "@type": "Review",
-        "author": {
-          "@type": "Person",
-          "name": "Robert Chen"
-        },
-        "reviewBody": "Incredibly professional and responsive. They provided high-end custom exhibition stands that stood out and drew huge crowds.",
-        "reviewRating": {
-          "@type": "Rating",
-          "ratingValue": "5",
-          "bestRating": "5"
-        }
-      },
-      {
-        "@type": "Review",
-        "author": {
-          "@type": "Person",
-          "name": "Elena Rostova"
-        },
-        "reviewBody": "Flawless execution of our annual blockchain summit. The glassmorphic stages and lighting setups were breathtaking.",
-        "reviewRating": {
-          "@type": "Rating",
-          "ratingValue": "5",
-          "bestRating": "5"
-        }
-      },
-      {
-        "@type": "Review",
-        "author": {
-          "@type": "Person",
-          "name": "Tariq Al Mansoor"
-        },
-        "reviewBody": "A spectacular team that consistently delivers premium results. They are our go-to agency for all major events.",
-        "reviewRating": {
-          "@type": "Rating",
-          "ratingValue": "5",
-          "bestRating": "5"
-        }
-      },
-      {
-        "@type": "Review",
-        "author": {
-          "@type": "Person",
-          "name": "Sophia Sterling"
-        },
-        "reviewBody": "We demanded absolute perfection for our VIP showcase, and Lead Events delivered exactly that. Unbelievable professionalism.",
-        "reviewRating": {
-          "@type": "Rating",
-          "ratingValue": "5",
-          "bestRating": "5"
-        }
-      },
-      {
-        "@type": "Review",
-        "author": {
-          "@type": "Person",
-          "name": "Khaled El Sayed"
-        },
-        "reviewBody": "An outstanding experience. Their support team was extremely cooperative, and the custom setup was phenomenal.",
-        "reviewRating": {
-          "@type": "Rating",
-          "ratingValue": "5",
-          "bestRating": "5"
-        }
-      }
-    ]
-  };
 
   const stats = [
     { value: "150+", label: "Corporate Events", icon: Briefcase },
@@ -396,11 +228,6 @@ export default function Home() {
         description="Lead Events is a premium event management company in the UAE powering events that impact the experience." 
       />
 
-      <Helmet>
-        <script type="application/ld+json">
-          {JSON.stringify(structuredData)}
-        </script>
-      </Helmet>
       
       {/* Cinematic Hero Section */}
       <section className="relative h-screen w-full flex items-center justify-center overflow-hidden">
@@ -454,16 +281,11 @@ export default function Home() {
         </motion.div>
       </section>
 
-      {/* Premium Interactive Expertise Section — SEO Optimized */}
+      {/* Premium Interactive Expertise Section */}
       <section
         aria-label="Our Event Management Services in Dubai & UAE"
-        itemScope
-        itemType="https://schema.org/ItemList"
         className="pt-12 pb-12 bg-[#fbf8f3] relative z-10 border-t border-[#fbf8f3] overflow-hidden"
       >
-        {/* Hidden SEO metadata for crawlers */}
-        <meta itemProp="name" content="Lead Events UAE — Event Management Services" />
-        <meta itemProp="description" content="Lead Events provides corporate event management, brand activations, and luxury wedding planning services in Dubai and across the UAE." />
 
         <div className="absolute inset-0 bg-noise opacity-0 pointer-events-none" />
         <div className="container mx-auto px-6 lg:px-12 relative z-10">
@@ -491,9 +313,6 @@ export default function Home() {
             {expertiseData.slice(0, 3).map((item, index) => (
               <motion.article
                 key={index}
-                itemScope
-                itemType="https://schema.org/Service"
-                itemProp="itemListElement"
                 initial={isMobile ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
                 whileInView={isMobile ? { opacity: 1, y: 0 } : { opacity: 1, y: 0 }}
                 viewport={isMobile ? undefined : { once: true }}
@@ -505,11 +324,6 @@ export default function Home() {
                     : 'min-h-[300px] md:min-h-[360px] lg:min-h-[455px]'
                 }`}
               >
-                <meta itemProp="name" content={item.seoTitle} />
-                <meta itemProp="description" content={item.desc} />
-                <meta itemProp="areaServed" content="Dubai, UAE" />
-                <meta itemProp="provider" content="Lead Events UAE" />
-                <link itemProp="url" href={`/services#${item.slug}`} />
 
                 <div className="absolute inset-0">
                   <img
@@ -533,7 +347,6 @@ export default function Home() {
                     <item.icon className="w-6 h-6" aria-hidden="true" />
                   </div>
                   <h3
-                    itemProp="name"
                     className="font-black text-white uppercase tracking-tight text-2xl mb-2"
                   >
                     {item.title}
@@ -635,25 +448,17 @@ export default function Home() {
                     opacity: { duration: 0.45 },
                     scale: { duration: 0.4 }
                   }}
-                  itemScope 
-                  itemType="https://schema.org/Review"
                   className="absolute w-full px-4 md:px-8 flex flex-col items-center text-center"
                 >
                   {/* Large Stylized Quotation Mark */}
                   <span className="text-brand-red/10 text-8xl md:text-9xl font-serif absolute -top-12 md:-top-16 select-none pointer-events-none">“</span>
                   
-                  <p itemProp="reviewBody" className="text-lg md:text-2xl font-serif italic text-brand-dark/85 leading-relaxed mb-10 max-w-[800px] relative z-10">
+                  <p className="text-lg md:text-2xl font-serif italic text-brand-dark/85 leading-relaxed mb-10 max-w-[800px] relative z-10">
                     "{testimonials[activeTestimonial].quote}"
                   </p>
                   
-                  <div itemProp="author" itemScope itemType="https://schema.org/Person" className="flex flex-col items-center">
-                    <h4 itemProp="name" className="text-brand-dark font-bold text-base md:text-lg tracking-wider">— {testimonials[activeTestimonial].name}</h4>
-                  </div>
-                  
-                  {/* Rating microdata for SEO */}
-                  <div itemProp="reviewRating" itemScope itemType="https://schema.org/Rating" className="hidden">
-                    <meta itemProp="ratingValue" content={testimonials[activeTestimonial].rating.toString()} />
-                    <meta itemProp="bestRating" content="5" />
+                  <div className="flex flex-col items-center">
+                    <h4 className="text-brand-dark font-bold text-base md:text-lg tracking-wider">— {testimonials[activeTestimonial].name}</h4>
                   </div>
                 </motion.blockquote>
               </AnimatePresence>
@@ -752,8 +557,6 @@ export default function Home() {
         ref={ctaRef}
         onMouseMove={handleCtaMouseMove}
         className="py-32 relative overflow-hidden bg-gradient-to-br from-[#050202] via-[#1a0505] to-[#050202] border-t border-white/5" 
-        itemScope 
-        itemType="https://schema.org/ContactPage"
       >
         {/* Cinematic Background Image */}
         <div className="absolute inset-0 bg-[url('/home/CTA.png')] bg-cover bg-center bg-no-repeat opacity-20 pointer-events-none" />
